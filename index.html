@@ -1,0 +1,4391 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELINO Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#7e22ce',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        #topBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(15, 23, 42, 0.8);
+    color: white;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    transition: all 0.3s ease;
+
+    z-index: 999;
+}
+
+/* SHOW BUTTON */
+#topBtn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* HOVER EFFECT */
+#topBtn:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+}
+
+#projectModal {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    color: #e2e8f0;
+}
+
+/* Background container */
+.bg-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+/* Each slide */
+.bg-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+/* Active slide */
+.bg-slide.active {
+    opacity: 1;
+}
+
+/* Dark overlay for readability */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(1, 16, 48, 0.75),
+        rgba(1, 16, 48, 0.90)
+    );
+    z-index: -1;
+}
+        .gradient-text {
+            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            left: -7.5px;
+            top: 0;
+            background: linear-gradient(135deg, #0ea5e9, #7e22ce);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #1e293b;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
+            transition: width 1s ease-in-out;
+        }
+        
+        .project-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            box-shadow: 5px 5px 15px rgba(2, 6, 23, 0.5), 
+                        -5px -5px 15px rgba(30, 41, 59, 0.5);
+        }
+        
+        .contact-input {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-input:focus {
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #0ea5e9, #7e22ce);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        
+        .hero-image-wrap {
+    position: relative;
+    width: 520px;
+    height: 700px;
+}
+
+.hero-image-wrap {
+    position: relative;
+    width: 750px;
+    height: 810px;
+}
+
+/* PURE IMAGE ONLY */
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+   
+  
+
+    /* LEFT SIDE FADE ONLY */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0.2)   15%,
+        rgba(0,0,0,0.6) 30%,
+        rgba(0,0,0,1) 90%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0.2) 15%,
+        rgba(0,0,0,0.6) 50%,
+        rgba(0,0,0,1) 90%
+    );
+
+    /* subtle premium look */
+    filter: contrast(1.00) saturate(1.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-image-wrap {
+        width: 420px;
+        height: 320px;
+    }
+}
+
+.search-container {
+    position: relative;
+
+    width: 220px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 18px;
+
+    border-radius: 16px;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(14px);
+
+    transition: all 0.3s ease;
+
+    overflow: hidden;
+}
+
+/* subtle glow on focus */
+.search-container:focus-within {
+
+    border-color: rgba(34,211,238,0.35);
+
+    box-shadow:
+        0 0 0 4px rgba(34,211,238,0.06),
+        0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* icon */
+.search-icon {
+    color: rgba(255,255,255,0.45);
+
+    font-size: 15px;
+
+    margin-right: 14px;
+}
+
+/* input */
+.search-input {
+    width: 100%;
+
+    background: transparent;
+
+    border: none;
+    outline: none;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 400;
+
+    letter-spacing: 0.2px;
+}
+
+/* placeholder */
+.search-input::placeholder {
+    color: rgba(255,255,255,0.35);
+}
+
+/* optional soft top highlight */
+.search-container::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background: rgba(255,255,255,0.08);
+}
+/* ========================================= */
+/* SPLASH SCREEN */
+/* ========================================= */
+/* ========================================= */
+/* APPLE STYLE STARTUP SCREEN */
+/* ========================================= */
+
+#splash-screen{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    background:#000;
+
+    z-index:999999;
+}
+
+/* TOP & BOTTOM LINES */
+.splash-line{
+
+    width:800px;
+    height:1px;
+
+    margin:20px 0;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(12, 110, 180, 0.8),
+        transparent
+    );
+
+    animation:lineGlow 2s ease-in-out infinite;
+}
+
+/* TITLE */
+.apple-logo-text{
+
+    font-size:3rem;
+    font-weight:100;
+    letter-spacing:8px;
+
+    color:white;
+
+    text-align:center;
+}
+
+/* TAGLINE */
+.splash-tagline{
+
+    margin-top:20px;
+
+    color:rgba(255, 255, 255, 0.7);
+
+    letter-spacing:3px;
+
+    font-size:14px;
+}
+
+/* ANIMATION
+@keyframes lineGlow{
+
+    0%,100%{
+        opacity:.4;
+    }
+
+    70%{
+        opacity:1;
+    }
+} */
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .splash-line{
+        width:220px;
+    }
+
+    .apple-logo-text{
+        font-size:1.8rem;
+        letter-spacing:3px;
+    }
+
+    .splash-tagline{
+        font-size:12px;
+    }
+}
+        
+    </style>
+</head>
+
+
+<body class="bg-dark text-slate-200">
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+
+        <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-3xl rounded-full"></div>
+    
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/10 blur-3xl rounded-full"></div>
+    
+    </div>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-darker/80 backdrop-blur-sm z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+
+                <div class="search-container">
+
+                    <i class="fas fa-search search-icon"></i>
+                
+                    <input 
+                        type="text" 
+                        id="portfolioSearch"
+                        placeholder="Search projects, skills..."
+                        class="search-input"
+                    >
+                
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-slate-200 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#Experience" class="nav-link">Experience</a>
+                    <a href="#achievements" class="nav-link">Achievements</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#Tools" class="nav-link">Tools</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+           
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2">
+                <a href="#home" class="block py-2 nav-link active">Home</a>
+                <a href="#about" class="block py-2 nav-link">About</a>
+                <a href="#Experience" class="block py-2 nav-link">Experience</a>
+                <a href="#achievements" class="block py-2 nav-link">Achievements</a>
+                <a href="#skills" class="block py-2 nav-link">Skills</a>
+                <a href="#Tools" class="block py-2 nav-link">Tools</a>
+                <a href="#projects" class="block py-2 nav-link">Projects</a>
+                <a href="#contact" class="block py-2 nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+ 
+   <!-- SPLASH SCREEN --> 
+   <div id="splash-screen">
+
+    <div class="splash-line"></div>
+
+    <div class="apple-logo-text">
+        portfolio
+    </div>
+
+    <div class="splash-line"></div>
+
+    <div class="splash-tagline">
+        <!-- Developed By  -->
+        Shiva Velishoju
+    </div>
+
+</div>
+   <script> window.addEventListener("load",()=>{ setTimeout(()=>{ const splash = document.getElementById("splash-screen"); splash.style.opacity = "0"; setTimeout(()=>{ splash.style.display = "none"; },800); },500); }); </script>
+<!-- Hero Section -->
+<!-- Background Slider -->
+<div class="bg-slider">
+
+    <!-- Modern developer workspace -->
+    <div class="bg-slide active"
+        style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');">
+    </div>
+
+    <!-- Code on screen (web development vibe) -->
+    <div class="bg-slide"
+        style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c');">
+    </div>
+
+    <!-- Laptop coding setup -->
+    <div class="bg-slide"
+        style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475');">
+    </div>
+
+    <!-- Software engineering / UI design desk -->
+    <div class="bg-slide"
+        style="background-image:url('https://images.unsplash.com/photo-1504639725590-34d0984388bd');">
+    </div>
+
+</div>
+
+<!-- Overlay -->
+
+<div class="overlay"></div>
+<section id="home" class="min-h-screen flex items-center pt-20">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+
+        <!-- Left Content -->
+        <div class="md:w-1/2 mb-12 md:mb-0">
+
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">
+                Hi, I'm
+                <span class="gradient-text">Shiva Velishoju</span>
+            </h2>
+            
+            <h3 class="text-2xl md:text-2xl font-semibold mb-6 text-slate-300">
+                Java Developer | Front-End Developer 
+                Manual Tester  
+            </h3>
+            
+            <p class="text-lg mb-8 text-slate-400 max-w-lg leading-relaxed">
+                B.Tech graduate with expertise in Java, SQL, HTML, CSS, JavaScript, 
+                and Software Development. Strong foundation in Object-Oriented Programming, 
+                Database Management, and Responsive Web Design. Passionate about developing 
+                efficient, user-friendly applications and solving real-world problems through technology.
+            </p>
+
+            <!-- Social Icons -->
+            <div class="flex flex-wrap items-center gap-4 mt-8">
+
+                <!-- GitHub -->
+                <a href="https://github.com/"
+                   target="_blank"
+                   class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-primary transition">
+
+                    <i class="fab fa-github"></i>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/"
+                   target="_blank"
+                   class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-600 transition">
+
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <!-- WhatsApp -->
+                <a href="https://wa.me/919963761162"
+                   target="_blank"
+                   class="social-icon text-xl w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-green-500 transition">
+
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <!-- Scroll To Top Button -->
+<button id="topBtn">
+    <i class="fas fa-arrow-up"></i>
+</button>            
+                <div class="flex flex-col sm:flex-row gap-4 mt-8">
+            </div> 
+        </div>
+        <!-- Right Image -->
+        <!-- <div class="md:w-2/2 flex justify-center items-center "> -->
+           <div class="hero-image-wrap right-4 ">
+                <div class="hero-image-wrap  bottom-2">        
+                <img src="https://i.postimg.cc/Dw473mB7/shiva.png"
+                     alt="Shiva Velishoju"
+                     class="hero-image">       
+            </div>       
+        </div>
+    </div>
+</section>  
+   <!-- SECTION DIVIDER -->
+  <div class="flex items-center justify-center my-2 bg-darker">
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+    <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+        portfolio
+    </span>
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+</div>
+   <!-- About Section -->
+<section id="about" class="py-20 bg-darker">
+    <div class="container mx-auto px-6">
+        <!-- Section Title -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                About <span class="gradient-text">Me</span>
+            </h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+        </div>
+        <!-- Content -->
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <!-- Left Image -->
+            <!-- Left Image -->
+<div class="md:w-1/3 flex justify-center items-center">
+
+    <div class="relative">
+
+        <!-- Glow Effect -->
+        <div class="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full"></div>
+
+        <!-- Image -->
+        <img
+            src="https://i.postimg.cc/s2Mzrhwk/B999D8C8-A51D-4C0B-97C1-D1F148C0A1F5.png"
+            alt="Shiva Velishoju"
+            class="relative w-67 md:w-72 lg:w-80 xl:w-96 h-auto object-contain"
+        >
+
+    </div>
+
+</div>
+            <!-- Right Content -->
+            <div class="md:w-2/3">
+                <h3 class="text-2xl font-bold mb-6">
+                    Who am I?
+                </h3>
+                
+                <p class="text-slate-400 mb-6 leading-relaxed">
+                    I'm Shiva Velishoju, a passionate Software Developer with a strong foundation in Java, SQL, Object-Oriented Programming, Front-End Development, and Manual Testing.
+                </p>
+                
+                <p class="text-slate-400 mb-6 leading-relaxed">
+                    As a B.Tech graduate in Electronics and Communication Engineering, I have developed technical expertise in Java programming, database management, web technologies, software testing, and software development methodologies.
+                </p>
+                
+                <p class="text-slate-400 mb-6 leading-relaxed">
+                    My technical skill set includes Java, MySQL, HTML, CSS, JavaScript, Git, GitHub, Manual Testing, Responsive Web Design, and Software Development. I enjoy building scalable applications, identifying defects, and improving software quality through effective testing practices.
+                </p>
+                
+                <p class="text-slate-400 mb-8 leading-relaxed">
+                    Through projects such as Velino IDE and VADDI Calculator, I have gained practical experience in software design, debugging, testing, and application development. I have worked with Black Box Testing, Boundary Value Analysis (BVA), Equivalence Class Partitioning (ECP), and User Acceptance Testing (UAT). My goal is to begin my career as a Software Engineer, Java Developer, or Software Test Engineer and contribute to innovative software solutions.
+                </p>
+                <!-- Personal Info -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+
+                    <div class="space-y-3">
+                        <h4 class="font-semibold">
+                            Name:
+                            <span class="text-slate-300 font-normal">
+                                Shiva Velishoju
+                            </span>
+                        </h4>
+                
+                        <h4 class="font-semibold">
+                            Email:
+                            <span class="text-slate-300 font-normal">
+                                shivavelishoju0827@gmail.com
+                            </span>
+                        </h4>
+                
+                        <h4 class="font-semibold">
+                            Phone:
+                            <span class="text-slate-300 font-normal">
+                                +91 9963761162
+                            </span>
+                        </h4>
+                    </div>
+                
+                    <div class="space-y-3">
+                        <h4 class="font-semibold">
+                            Qualification:
+                            <span class="text-slate-300 font-normal">
+                                B.Tech (ECE)
+                            </span>
+                        </h4>
+                
+                        <h4 class="font-semibold">
+                            Skills: Java, MySQL, HTML, CSS, JavaScript
+                            <span class="text-slate-300 font-normal">
+                                Java Developer
+                            </span>
+                        </h4>
+                
+                        <h4 class="font-semibold">
+                            Location:
+                            <span class="text-slate-300 font-normal">
+                                Warangal, Telangana, India
+                            </span>
+                        </h4>
+                    </div>
+                
+                </div>
+                
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</section>
+  
+   <!-- SECTION DIVIDER -->
+  <div class="flex items-center justify-center my-2 bg-darker">
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+    <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+        portfolio
+    </span>
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+</div>
+        
+<!-- Experience & Projects Section -->
+<section id="experience" class="py-20 bg-darker">
+
+    <div class="container mx-auto px-6">
+
+        <!-- Section Title -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                Experience & <span class="gradient-text">Projects</span>
+            </h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+        </div>
+         
+        
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <!-- Internship -->
+            <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 card-hover">
+                <div class="text-primary text-3xl mb-4">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+
+                <h3 class="text-xl font-bold mb-2">
+                    Front-End Development Intern
+                </h3>
+
+                <p class="text-sm text-slate-400 mb-4">
+                    CODEXINTERN • Aug 2025 - Oct 2025
+                </p>
+
+                <p class="text-slate-300 leading-relaxed">
+                    Developed responsive websites using HTML, CSS, and JavaScript.
+                    Built modern user interfaces, improved website performance,
+                    and gained practical experience in front-end development.
+                </p>
+            </div>
+
+            <!-- Java Developer -->
+            <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 card-hover">
+                <div class="text-secondary text-3xl mb-4">
+                    <i class="fab fa-java"></i>
+                </div>
+
+                <h3 class="text-xl font-bold mb-2">
+                    Java Developer
+                </h3>
+
+                <p class="text-sm text-slate-400 mb-4">
+                    Academic & Personal Projects • 2024 - Present
+                </p>
+
+                <p class="text-slate-300 leading-relaxed">
+                    Developed Java applications using OOP concepts, Collections Framework,
+                    Exception Handling, File Handling, and MySQL database integration.
+                    Focused on problem-solving and software development best practices.
+                </p>
+            </div>
+
+            <!-- Manual Testing -->
+            <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 card-hover">
+                <div class="text-primary text-3xl mb-4">
+                    <i class="fas fa-bug"></i>
+                </div>
+
+                <h3 class="text-xl font-bold mb-2">
+                    Manual Testing Engineer
+                </h3>
+
+                <p class="text-sm text-slate-400 mb-4">
+                    Testing Projects • 2024 - Present
+                </p>
+
+                <p class="text-slate-300 leading-relaxed">
+                    Performed Black Box Testing, Boundary Value Analysis (BVA),
+                    Equivalence Class Partitioning (ECP), and User Acceptance Testing (UAT).
+                    Created test cases and validated application functionality.
+                </p>
+            </div>
+
+            <!-- Velino IDE -->
+            <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 card-hover">
+                <div class="text-secondary text-3xl mb-4">
+                    <i class="fas fa-code"></i>
+                </div>
+
+                <h3 class="text-xl font-bold mb-2">
+                    Software Development Projects
+                </h3>
+
+                <p class="text-sm text-slate-400 mb-4">
+                    Velino IDE & Personal Projects • 2023 - Present
+                </p>
+
+                <p class="text-slate-300 leading-relaxed">
+                    Developed desktop and web applications using Electron.js,
+                    Node.js, HTML, CSS, and JavaScript. Implemented modern UI
+                    systems, debugging tools, and hardware communication features.
+                </p>
+            </div>
+            
+
+        </div>
+
+    </div>
+    <br>
+    <br>
+   
+</section> 
+
+   <!-- SECTION DIVIDER -->
+  <div class="flex items-center justify-center my-2 bg-darker">
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+    <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+        portfolio
+    </span>
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+</div>
+<!-- ========================================= -->
+<!-- ACHIEVEMENTS & CERTIFICATIONS -->
+<!-- ========================================= -->
+
+<section id="achievements" class="py-20 bg-transpart overflow-hidden">
+
+    <div class="container mx-auto px-6">
+
+        <!-- TITLE -->
+        <div class="text-center mb-16">
+
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                My <span class="gradient-text">Achievements</span>
+            </h2>
+
+            <p class="text-slate-400 max-w-2xl mx-auto">
+                Certifications, internships, workshops, hackathons,
+                technical achievements, and professional learning milestones.
+            </p>
+
+        </div>
+        
+    <!-- PROFESSIONAL HIGHLIGHTS -->
+    <div id="stats-section" class="grid grid-cols-4 gap-3 md:gap-8 mb-20 margin-top">
+
+        <div class="text-center">
+            <h3 class="counter text-2xl md:text-5xl font-bold gradient-text mb-1 md:mb-2" data-target="50">0</h3>
+            <p class="text-slate-300 text-[10px] md:text-base font-medium">
+                Projects
+            </p>
+        </div>
+    
+        <div class="text-center">
+            <h3 class="counter text-2xl md:text-5xl font-bold gradient-text mb-1 md:mb-2" data-target="10">0</h3>
+            <p class="text-slate-300 text-[10px] md:text-base font-medium">
+                Technologies
+            </p>
+        </div>
+    
+        <div class="text-center">
+            <h3 class="counter text-2xl md:text-5xl font-bold gradient-text mb-1 md:mb-2" data-target="16">0</h3>
+            <p class="text-slate-300 text-[10px] md:text-base font-medium">
+                Certifications
+            </p>
+        </div>
+    
+        <div class="text-center">
+            <h3 class="counter text-2xl md:text-5xl font-bold gradient-text mb-1 md:mb-2" data-target="4">0</h3>
+            <p class="text-slate-300 text-[10px] md:text-base font-medium">
+                Domains
+            </p>
+        </div>
+    
+    </div>
+        <!-- SLIDER -->
+        <div class="certificate-slider">
+
+            <div class="certificate-track">
+
+                <!-- CERTIFICATE 1 -->
+                <div class="certificate-card"
+                     onclick="openCertificate('https://i.postimg.cc/WpMmkxfD/IBM-DB0101EN-Certificate-Cognitive-Class-(2).png')">
+
+                    <img src="https://i.postimg.cc/WpMmkxfD/IBM-DB0101EN-Certificate-Cognitive-Class-(2).png"
+                         class="certificate-image"
+                         alt="IBM SQL">
+
+                    <div class="certificate-content">
+
+                        <h3>IBM SQL Certification</h3>
+                        <span>IBM</span>
+
+                    </div>
+
+                </div>
+
+                <!-- CERTIFICATE 2 -->
+                <div class="certificate-card"
+                     onclick="openCertificate('https://i.postimg.cc/yxXFCSZH/MATLAB-and-MS-OFFICE-SOFTWARE.jpg')">
+
+                    <img src="https://i.postimg.cc/yxXFCSZH/MATLAB-and-MS-OFFICE-SOFTWARE.jpg"
+                         class="certificate-image"
+                         alt="Embedded Systems">
+
+                    <div class="certificate-content">
+
+                        <h3>MATLAB-and-MS-OFFICE-SOFTWARE</h3>
+                        <span>Vaagdevi College of Engineering</span>
+
+                    </div>
+
+                </div>
+
+                <!-- CERTIFICATE 3 -->
+                <div class="certificate-card"
+                     onclick="openCertificate('https://i.postimg.cc/5933rZqC/Screenshot-2026-06-04-at-5-29-28-PM.png')">
+
+                    <img src="https://i.postimg.cc/5933rZqC/Screenshot-2026-06-04-at-5-29-28-PM.png"
+                         class="certificate-image"
+                         alt="Frontend">
+
+                    <div class="certificate-content">
+
+                        <h3>Front-End Development</h3>
+                        <span>CODEXINTERN</span>
+
+                    </div>
+
+                </div>
+
+                <div class="certificate-card"
+                     onclick="openCertificate('https://i.postimg.cc/Vsj9C2Hd/Received-Certificate-for-IOT-Arduino-Workshop.jpg')">
+
+                    <img src="https://i.postimg.cc/Vsj9C2Hd/Received-Certificate-for-IOT-Arduino-Workshop.jpg"
+                         class="certificate-image">
+
+                    <div class="certificate-content">
+                        <h3>IOT workshop from Swecha Team</h3>
+                        <span>Vaagdevi College of Engineering</span>
+                    </div>
+
+                </div>
+
+                <!-- CERTIFICATE 4 -->
+                <div class="certificate-card"
+                     onclick="openCertificate('https://i.postimg.cc/YqM6f8Jx/testing.png')">
+
+                    <img src="https://i.postimg.cc/YqM6f8Jx/testing.png"
+                         class="certificate-image"
+                         alt="Manual Testing">
+
+                    <div class="certificate-content">
+
+                        <h3>Manual Testing</h3>
+                        <span>Greate learning</span>
+
+                    </div>
+
+                </div>
+                <!-- DATA ANALYTICS ESSENTIALS -->
+
+<div class="certificate-card"
+onclick="openCertificate('https://i.postimg.cc/8cBhgr6N/Data-Analytics-Essentials-Badge20240203-29-m51odv.png')">
+
+<img src="https://i.postimg.cc/8cBhgr6N/Data-Analytics-Essentials-Badge20240203-29-m51odv.png"
+    class="certificate-image"
+    alt="Data Analytics Essentials">
+
+<div class="certificate-content">
+
+   <h3>
+       Data Analytics Essentials
+   </h3>
+
+   <span>
+       Cisco Networking Academy
+   </span>
+
+</div>
+
+</div>
+<!-- spyro -->
+
+<div class="certificate-card"
+     onclick="openCertificate('https://i.postimg.cc/mZQ3HK6C/spyro.jpg')">
+
+    <img src="https://i.postimg.cc/mZQ3HK6C/spyro.jpg"
+         class="certificate-image"
+         alt="Data Analytics Essentials">
+
+    <div class="certificate-content">
+
+        <h3>
+            Spyro Tech event
+        </h3>
+
+        <span>
+            Vaagdevi college of Engineering
+        </span>
+
+    </div>
+
+</div>
+
+
+                <!-- DUPLICATE FOR LOOP -->
+                <div class="certificate-card"
+                     onclick="openCertificate('https://i.postimg.cc/FFjbLwnJ/smart-india.jpg')">
+
+                    <img src="https://i.postimg.cc/FFjbLwnJ/smart-india.jpg"
+                         class="certificate-image">
+
+                    <div class="certificate-content">
+                        <h3>smart-india hackathon Certification VIBA</h3>
+                        <span> Vaagdevi college of Engineering</span>
+                    </div>
+
+                </div>
+
+                <div class="certificate-card"
+                     onclick="openCertificate('https://i.postimg.cc/NG18HZPR/technocraft.jpg')">
+
+                    <img src="https://i.postimg.cc/NG18HZPR/technocraft.jpg"
+                         class="certificate-image">
+
+                    <div class="certificate-content">
+                        <h3>Technocraft co-coordinator</h3>
+                        <span> Vaagdevi college of Engineering</span>
+                    </div>
+
+                </div>
+
+                
+            </div>
+
+        </div>
+
+    </div>
+    <style>
+
+        /* ========================================= */
+        /* CERTIFICATE SLIDER */
+        /* ========================================= */
+        
+        .certificate-slider{
+            overflow:hidden;
+            position:relative;
+        }
+        
+        .certificate-track{
+        
+            display:flex;
+            gap:30px;
+        
+            width:max-content;
+        
+            animation:scrollCertificates 25s linear infinite;
+        }
+        
+        .certificate-slider:hover .certificate-track{
+            animation-play-state:paused;
+        }
+        
+        /* ========================================= */
+        /* CARD */
+        /* ========================================= */
+        
+        .certificate-card{
+        
+            width:320px;
+        
+            border-radius:24px;
+        
+            overflow:hidden;
+        
+            cursor:pointer;
+        
+            backdrop-filter:blur(15px);
+        
+            background:rgba(255,255,255,.05);
+        
+            border:1px solid rgba(255,255,255,.08);
+        
+            transition:.4s ease;
+        
+            flex-shrink:0;
+        }
+        
+        .certificate-card:hover{
+        
+            transform:translateY(-10px) scale(1.03);
+        
+            box-shadow:0 20px 40px rgba(6,182,212,.25);
+        }
+        
+        .certificate-image{
+        
+            width:100%;
+            height:220px;
+        
+            object-fit:cover;
+        
+            transition:.4s ease;
+        }
+        
+        .certificate-card:hover .certificate-image{
+        
+            transform:scale(1.08);
+        }
+        
+        .certificate-content{
+        
+            padding:20px;
+        }
+        
+        .certificate-content h3{
+        
+            font-size:18px;
+            font-weight:700;
+        
+            color:white;
+        
+            margin-bottom:6px;
+        }
+        
+        .certificate-content span{
+        
+            color:#94a3b8;
+            font-size:14px;
+        }
+        
+        /* ========================================= */
+        /* AUTO SLIDER */
+        /* ========================================= */
+        
+        @keyframes scrollCertificates{
+        
+            from{
+                transform:translateX(0);
+            }
+        
+            to{
+                transform:translateX(-50%);
+            }
+        }
+        
+        /* ========================================= */
+        /* MODAL */
+        /* ========================================= */
+        
+        .certificate-modal{
+        
+            display:none;
+        
+            position:fixed;
+        
+            top:0;
+            left:0;
+        
+            width:100%;
+            height:100%;
+        
+            background:rgba(0,0,0,.92);
+        
+            z-index:9999;
+        
+            justify-content:center;
+            align-items:center;
+        }
+        
+        .modal-image{
+        
+            max-width:90%;
+            max-height:90%;
+        
+            border-radius:20px;
+        }
+        
+        .close-modal{
+        
+            position:absolute;
+        
+            top:30px;
+            right:40px;
+        
+            font-size:45px;
+        
+            color:white;
+        
+            cursor:pointer;
+        }
+        
+        /* ========================================= */
+        /* FADE ANIMATION */
+        /* ========================================= */
+        
+        .certificate-card{
+        
+            opacity:0;
+        
+            transform:translateY(50px);
+        
+            animation:fadeUp .8s ease forwards;
+        }
+        
+        @keyframes fadeUp{
+        
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+        
+        /* ========================================= */
+        /* MOBILE */
+        /* ========================================= */
+        
+        @media(max-width:768px){
+        
+            .certificate-card{
+        
+                width:260px;
+            }
+        
+            .certificate-image{
+        
+                height:180px;
+            }
+        
+            .certificate-track{
+        
+                gap:20px;
+            }
+        }
+        
+        </style>
+        <script>
+
+            function openCertificate(img) {
+            
+                const modal = document.getElementById("certificateModal");
+                const modalImg = document.getElementById("modalImage");
+            
+                modal.style.display = "flex";
+                modalImg.src = img;
+            }
+            
+            /* WAIT UNTIL PAGE LOADS */
+            
+            document.addEventListener("DOMContentLoaded", function () {
+            
+                const modal = document.getElementById("certificateModal");
+                const closeBtn = document.querySelector(".close-modal");
+            
+                /* CLOSE BUTTON */
+            
+                closeBtn.addEventListener("click", function () {
+            
+                    modal.style.display = "none";
+            
+                });
+            
+                /* CLICK OUTSIDE IMAGE */
+            
+                modal.addEventListener("click", function (e) {
+            
+                    if (e.target === modal) {
+            
+                        modal.style.display = "none";
+            
+                    }
+            
+                });
+            
+                /* ESC KEY */
+            
+                document.addEventListener("keydown", function (e) {
+            
+                    if (e.key === "Escape") {
+            
+                        modal.style.display = "none";
+            
+                    }
+            
+                });
+            
+            });
+            
+            </script>
+            <div>
+
+
+            </div>
+         
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    
+        const counters = document.querySelectorAll(".counter");
+        let animated = false;
+    
+        const observer = new IntersectionObserver((entries) => {
+    
+            entries.forEach(entry => {
+    
+                if (entry.isIntersecting && !animated) {
+    
+                    animated = true;
+    
+                    counters.forEach(counter => {
+    
+                        const target = parseInt(counter.dataset.target);
+                        let count = 0;
+    
+                        const speed = 2000; // animation duration
+                        const increment = target / (speed / 16);
+    
+                        const updateCounter = () => {
+    
+                            count += increment;
+    
+                            if (count < target) {
+    
+                                counter.textContent = Math.ceil(count);
+    
+                                requestAnimationFrame(updateCounter);
+    
+                            } else {
+    
+                                counter.textContent = target + "+";
+    
+                            }
+                        };
+    
+                        updateCounter();
+    
+                    });
+    
+                }
+    
+            });
+    
+        }, {
+            threshold: 0.4
+        });
+    
+        observer.observe(document.getElementById("stats-section"));
+    
+    });
+    </script>
+</section>
+
+<!-- CERTIFICATE MODAL -->
+
+<div id="certificateModal" class="certificate-modal">
+
+    <span class="close-modal">&times;</span>
+
+    <img id="modalImage" class="modal-image">
+
+</div>
+<!-- SECTION DIVIDER -->
+<div class="flex items-center justify-center my-2 bg-darker">
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+    <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+        portfolio
+    </span>
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+</div>
+<!-- End Experience Section -->
+    <!-- Skills Section -->
+<!-- =============================== -->
+<!-- SMALLER INTERACTIVE SKILLS TREE -->
+<!-- =============================== -->
+
+<section id="skills" class="py-20 bg-transpart overflow-hidden">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+        <!-- TITLE -->
+        <div class="text-center mb-16">
+
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">
+                Skills <span class="gradient-text">Architecture</span>
+            </h3>
+
+            <p class="text-slate-400 max-w-xl mx-auto leading-relaxed">
+                Interactive visualization of my technical expertise,embedded systems knowledge, software development,robotics, and 
+                innovation capabilities.
+            </p>
+
+        </div>
+
+        <!-- MAIN -->
+        <div class="flex flex-col items-center relative">
+
+            <!-- MAIN NODE -->
+            <div class="main-node">
+
+                <i class="fas fa-laptop-code text-3xl text-cyan-300 mb-3 "></i>
+
+                <h3 class="text-xl font-bold text-white">
+                    Software Development
+                </h3>
+
+                <p class="text-slate-600 text-sm mt-1">
+                    Java Developer | Front-End Developer | Manual Tester
+                </p>
+
+            </div>
+            <!-- GRID -->
+<!-- CARD 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 w-full mt-10">
+
+                <div class="flex flex-col items-center relative group">
+
+                    <div class="skill-card">
+                
+                        <div class="skill-icon bg-cyan-500/20">
+                            <i class="fas fa-microchip text-cyan-400"></i>
+                        </div>
+                
+                        <h3 class="skill-title">
+                            Embedded Systems 
+                        </h3>
+                
+                        <!-- Always Visible -->
+                        <ul class="skill-list">
+                            <li>Arduino</li>
+                            <li>ESP32</li>
+                            <li>Velino IDE</li>
+                        </ul>
+                
+                        <!-- Hover Dropdown -->
+                        <div
+                            class="max-h-0 overflow-hidden group-hover:max-h-48 transition-all duration-500">
+                
+                            <ul class="mt-3 pt-3 border-t border-slate-700 text-slate-300 text-sm space-y-2">
+                
+                                <li>✓ Embedded C</li>
+                                <li>✓ Sensors & Actuators</li>
+                                <li>✓ Bluetooth</li>
+                                <li>✓ WiFi Communication</li>
+                                <li>✓ Arduino IDE</li>
+                                <li>✓ EasyEDA</li>
+                                <li>✓ Tinkercad</li>
+                                <li>✓ MIT App Inventor</li>
+                
+                            </ul>
+                
+                        </div>
+                
+                    </div>
+                
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="flex flex-col items-center relative group">
+
+                    <div class="skill-card">
+                
+                        <div class="skill-icon bg-yellow-500/20">
+                            <i class="fas fa-globe text-yellow-400"></i>
+                        </div>
+                
+                        <h3 class="skill-title">
+                            Frontend
+                        </h3>
+                
+                        <ul class="skill-list">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                        </ul>
+                
+                        <div class="max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-500">
+                
+                            <ul class="mt-3 pt-3 border-t border-slate-700 text-slate-300 text-sm space-y-2">
+                                <li>✓ Tailwind CSS</li>
+                                <li>✓ Responsive Design</li>
+                                <li>✓ UI Development</li>
+                            </ul>
+                
+                        </div>
+                
+                    </div>
+                
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="flex flex-col items-center relative group">
+
+                    <div class="skill-card">
+                
+                        <div class="skill-icon bg-purple-500/20">
+                            <i class="fas fa-server text-purple-400"></i>
+                        </div>
+                
+                        <h3 class="skill-title">
+                            Backend
+                        </h3>
+                
+                        <ul class="skill-list">
+                            
+                            <li>C</li>
+                            <li>Java</li>
+                            <li>MySQL</li>
+                        </ul>
+                
+                        <div class="max-h-0 overflow-hidden group-hover:max-h-48 transition-all duration-500">
+                
+                            <ul class="mt-3 pt-3 border-t border-slate-700 text-slate-300 text-sm space-y-2">
+                                <li>✓ SQL</li>
+                                <li>✓ OOP</li>
+                                <li>✓ DSA</li>
+                                <li>✓ Collections</li>
+                                <li>✓ Exception Handling</li>
+                            </ul>
+                
+                        </div>
+                
+                    </div>
+                
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="flex flex-col items-center relative group">
+
+                    <div class="skill-card">
+                
+                        <div class="skill-icon bg-green-500/20">
+                            <i class="fas fa-tools text-green-400"></i>
+                        </div>
+                
+                        <h3 class="skill-title">
+                            Tools & Technologies
+                        </h3>
+                
+                        <ul class="skill-list">
+                            <li>Git</li>
+                            <li>Manual Testing</li>
+                            <li>VS Code</li>
+                    
+                        </ul>
+                
+                        <div class="max-h-0 overflow-hidden group-hover:max-h-52 transition-all duration-500">
+                
+                            <ul class="mt-3 pt-3 border-t border-slate-700 text-slate-300 text-sm space-y-2">
+                                <li>✓ Eclipse</li>
+                                <li>✓ IntelliJ IDEA</li>
+                                <li>✓ Arduino IDE</li>
+                                <li>✓ Manual Testing</li>
+                                <li>✓ SDLC</li>
+                                <li>✓ Agile</li>
+                            </ul>
+                
+                        </div>
+                
+                    </div>
+                
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+   <!-- SECTION DIVIDER -->
+  <div class="flex items-center justify-center my-2 bg-darker">
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+    <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+        portfolio
+    </span>
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+</div>
+
+<!-- =============================== -->
+<!-- POPUP MODAL -->
+<!-- =============================== -->
+
+<div id="skillPopup"
+class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4 backdrop-blur-sm ">
+
+    <div class="popup-box">
+
+        <button onclick="closeSkill()"
+        class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+
+            <i class="fas fa-times"></i>
+
+        </button>
+
+        <i class="fas fa-bolt text-cyan-400 text-4xl mb-5"></i>
+
+        <h2 id="popupTitle"
+        class="text-2xl font-bold text-white mb-4 text-center">
+        </h2>
+
+        <p id="popupDescription"
+        class="text-slate-300 text-center leading-relaxed">
+        </p>
+
+    </div>
+
+</div>
+
+<!-- =============================== -->
+<!-- JAVASCRIPT -->
+<!-- =============================== -->
+
+<script>
+
+function openSkill(title, description){
+
+    document.getElementById("popupTitle").innerText = title;
+
+    document.getElementById("popupDescription").innerText = description;
+
+    document.getElementById("skillPopup").classList.remove("hidden");
+
+    document.getElementById("skillPopup").classList.add("flex");
+
+}
+
+function closeSkill(){
+
+    document.getElementById("skillPopup").classList.add("hidden");
+
+    document.getElementById("skillPopup").classList.remove("flex");
+
+}
+
+</script>
+
+<!-- =============================== -->
+<!-- CSS -->
+<!-- =============================== -->
+
+<style>
+
+.main-node{
+
+    width:280px;
+
+    padding:30px 20px;
+
+    border-radius:25px;
+
+    background:linear-gradient(145deg,#0f172a,#111827);
+
+    border:1px solid rgba(34,211,238,0.25);
+
+    text-align:center;
+
+    box-shadow:
+    0 0 35px rgba(34,211,238,0.12);
+
+    z-index:10;
+
+}
+
+.branch-line{
+
+    position:absolute;
+
+    top:170px;
+
+    width:69%;
+
+    height:2px;
+
+    background:#22d3ee55;
+
+    border-radius:10px;
+
+}
+
+.top-line{
+
+    position:absolute;
+
+    top:-47px;
+
+    width:2px;
+
+    height:50px;
+
+}
+
+.skill-card{
+
+    width:100%;
+
+    max-width:260px;
+
+    padding:25px 20px;
+
+    border-radius:24px;
+
+    background:linear-gradient(145deg,#0f172a,#111827);
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    cursor:pointer;
+
+    transition:0.4s ease;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.3);
+
+}
+
+.skill-card:hover{
+
+    transform:translateY(-8px) scale(1.02);
+
+    border-color:rgba(34,211,238,0.4);
+
+    box-shadow:
+    0 15px 35px rgba(34,211,238,0.15);
+
+}
+
+.skill-icon{
+
+    width:65px;
+    height:65px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:auto auto 20px;
+
+    font-size:28px;
+
+}
+
+.skill-title{
+
+    text-align:center;
+
+    color:white;
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+.skill-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.skill-list li{
+
+    list-style:none;
+
+    padding:10px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.04);
+
+    color:#cbd5e1;
+
+    text-align:center;
+
+    font-size:14px;
+
+}
+
+/* POPUP */
+
+.popup-box{
+
+    width:100%;
+
+    max-width:420px;
+
+    background:#0f172a;
+
+    border-radius:28px;
+
+    padding:40px 30px;
+
+    border:1px solid rgba(34,211,238,0.2);
+
+    position:relative;
+
+    box-shadow:
+    0 0 40px rgba(34,211,238,0.15);
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .main-node{
+
+        width:100%;
+
+        max-width:280px;
+
+    }
+
+    .skill-card{
+
+        max-width:100%;
+
+    }
+
+}
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 40px;
+}
+
+.slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  min-width: 180px;
+  height: 120px;
+  background: #1e293b;
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.nav.left { left: 10px; }
+.nav.right { right: 10px; }
+</style>
+<!-- Tools & Technologies -->
+<section id="skills" class="py-20 bg-transpart overflow-hidden">
+<div  id="Tools" class="mt-10 px-4 md:px-8  ">
+
+    <!-- Section Title -->
+    <div class="text-center mb-12">
+
+        <h3 class="text-2xl md:text-3xl font-bold mb-4">
+            Tools & <span class="gradient-text">Technologies</span>
+        </h3>
+
+        <p class="text-slate-400 max-w-1xl mx-auto leading-relaxed">
+            Technologies and tools I use for Java development, front-end development,
+            database management, and software testing.
+        </p>
+
+    </div>
+
+    <!-- SLIDER WRAPPER -->
+    <div class="relative w-full overflow-hidden px-10 bg-transpart">
+
+        <!-- LEFT BUTTON -->
+        <button onclick="scrollTechLeft()"
+            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-transpart text-white px-3 py-2 rounded-full shadow-lg">
+            ❮
+        </button>
+
+        <!-- RIGHT BUTTON -->
+        <button onclick="scrollTechRight()"
+            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-transpart text-white px-3 py-2 rounded-full shadow-lg">
+            ❯
+        </button>
+
+        <!-- SCROLL AREA -->
+        <div id="techSlider"
+            class="flex gap-6 overflow-x-auto scroll-smooth py-4 px-2">
+
+            <!-- HTML -->
+            <div onclick="showTech('HTML','Used for building structured and semantic web pages.')"
+                class="min-w-[220px] group flex flex-col items-center text-center p-6 bg-slate-800/60 border border-slate-700 rounded-2xl shadow-lg hover:border-orange-500 hover:-translate-y-2 transition duration-300 cursor-pointer">
+
+                <i class="fab fa-html5 text-5xl text-orange-500 mb-4 group-hover:scale-110 transition"></i>
+                <span class="font-medium text-slate-200">HTML5</span>
+            </div>
+
+            <!-- CSS -->
+            <div onclick="showTech('CSS','Used for responsive design, layouts, animations, and styling.')"
+                class="min-w-[220px] group flex flex-col items-center text-center p-6 bg-slate-800/60 border border-slate-700 rounded-2xl shadow-lg hover:border-blue-500 hover:-translate-y-2 transition duration-300 cursor-pointer">
+
+                <i class="fab fa-css3-alt text-5xl text-blue-500 mb-4 group-hover:scale-110 transition"></i>
+                <span class="font-medium text-slate-200">CSS3</span>
+            </div>
+
+            <!-- JavaScript -->
+            <div onclick="showTech('JavaScript','Used for dynamic web applications and interactive UI development.')"
+                class="min-w-[220px] group flex flex-col items-center text-center p-6 bg-slate-800/60 border border-slate-700 rounded-2xl shadow-lg hover:border-yellow-400 hover:-translate-y-2 transition duration-300 cursor-pointer">
+
+                <i class="fab fa-js-square text-5xl text-yellow-400 mb-4 group-hover:scale-110 transition"></i>
+                <span class="font-medium text-slate-200">JavaScript</span>
+            </div>
+
+            <!-- Java -->
+            <div onclick="showTech('Java','Core Java, OOP, Collections, Exception Handling, and backend logic development.')"
+                class="min-w-[220px] group flex flex-col items-center text-center p-6 bg-slate-800/60 border border-slate-700 rounded-2xl shadow-lg hover:border-red-500 hover:-translate-y-2 transition duration-300 cursor-pointer">
+
+                <i class="fab fa-java text-5xl text-red-500 mb-4 group-hover:scale-110 transition"></i>
+                <span class="font-medium text-slate-200">Java</span>
+            </div>
+
+            <!-- MySQL -->
+            <div onclick="showTech('MySQL','Database design, SQL queries, joins, normalization, and data management.')"
+                class="min-w-[220px] group flex flex-col items-center text-center p-6 bg-slate-800/60 border border-slate-700 rounded-2xl shadow-lg hover:border-green-500 hover:-translate-y-2 transition duration-300 cursor-pointer">
+
+                <i class="fas fa-database text-5xl text-green-500 mb-4 group-hover:scale-110 transition"></i>
+                <span class="font-medium text-slate-200">MySQL</span>
+            </div>
+
+            <!-- GitHub -->
+            <div onclick="showTech('Git & GitHub','Version control, collaboration, and project management using Git.')"
+                class="min-w-[220px] group flex flex-col items-center text-center p-6 bg-slate-800/60 border border-slate-700 rounded-2xl shadow-lg hover:border-purple-500 hover:-translate-y-2 transition duration-300 cursor-pointer">
+
+                <i class="fab fa-github text-5xl text-purple-400 mb-4 group-hover:scale-110 transition"></i>
+                <span class="font-medium text-slate-200">GitHub</span>
+            </div>
+
+            <!-- VS Code -->
+            <div onclick="showTech('VS Code','Primary IDE for Java, web development, and debugging.')"
+                class="min-w-[220px] group flex flex-col items-center text-center p-6 bg-slate-800/60 border border-slate-700 rounded-2xl shadow-lg hover:border-blue-400 hover:-translate-y-2 transition duration-300 cursor-pointer">
+
+                <i class="fas fa-code text-5xl text-blue-400 mb-4 group-hover:scale-110 transition"></i>
+                <span class="font-medium text-slate-200">VS Code</span>
+            </div>
+
+            <!-- Testing -->
+            <div onclick="showTech('Manual Testing','Black Box Testing, BVA, ECP, UAT, and test case design.')"
+                class="min-w-[220px] group flex flex-col items-center text-center p-6 bg-slate-800/60 border border-slate-700 rounded-2xl shadow-lg hover:border-pink-400 hover:-translate-y-2 transition duration-300 cursor-pointer">
+
+                <i class="fas fa-bug text-5xl text-pink-400 mb-4 group-hover:scale-110 transition"></i>
+                <span class="font-medium text-slate-200">Testing</span>
+            </div>
+
+            <!-- IDEs -->
+            <div onclick="showTech('Java IDEs','Used Eclipse / IntelliJ for Java application development.')"
+                class="min-w-[220px] group flex flex-col items-center text-center p-6 bg-slate-800/60 border border-slate-700 rounded-2xl shadow-lg hover:border-indigo-400 hover:-translate-y-2 transition duration-300 cursor-pointer">
+
+                <i class="fas fa-laptop-code text-5xl text-indigo-400 mb-4 group-hover:scale-110 transition"></i>
+                <span class="font-medium text-slate-200">Java IDEs</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+</section>
+<script>
+    const techSlider = document.getElementById("techSlider");
+  
+    function scrollTechLeft() {
+      techSlider.scrollBy({
+        left: -300,
+        behavior: "smooth"
+      });
+    }
+  
+    function scrollTechRight() {
+      techSlider.scrollBy({
+        left: 300,
+        behavior: "smooth"
+      });
+    }
+  </script>
+ <div class="text-center mb-12 ">
+
+        <h3 class="text-2xl md:text-3xl font-bold mb-4">
+             <span class="gradient-text"></span>
+        </h3>
+
+    </div>
+
+<!-- Modal -->
+<div id="techModal"
+class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl p-8 w-[90%] max-w-md relative">
+
+        <!-- Close Button -->
+        <button onclick="closeModal()"
+        class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">
+            &times;
+        </button>
+
+        <!-- Title -->
+        <h2 id="techTitle"
+        class="text-2xl font-bold gradient-text mb-4"></h2>
+
+        <!-- Description -->
+        <p id="techDescription"
+        class="text-slate-300 leading-relaxed"></p>
+
+    </div>
+</div>
+    </section>
+
+    <script>
+
+        function showTech(title, description) {
+        
+            document.getElementById("techTitle").innerText = title;
+            document.getElementById("techDescription").innerText = description;
+        
+            const modal = document.getElementById("techModal");
+        
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+        
+        function closeModal() {
+        
+            const modal = document.getElementById("techModal");
+        
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+        }
+        
+        </script>
+        <!-- SECTION DIVIDER -->
+ <div class="flex items-center justify-center my-2 bg-darker">
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+    <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+        velino
+    </span>
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+</div>
+    
+<!-- PROJECTS SECTION -->
+<!-- ========================================= -->
+<!-- PROJECTS SECTION -->
+<!-- ========================================= -->
+
+<section id="projects" class="py-5 bg-darker overflow-hidden">
+
+    <div class="container mx-auto px-6">
+
+        <!-- HEADING -->
+        <div class="text-center mb-16">
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">
+                My <span class="gradient-text">Projects</span>
+            </h3>
+          
+            
+
+            <p class="text-slate-400 max-w-1xl mx-auto">
+                Innovative embedded systems, IoT devices, robotics, automation,
+                and software applications developed under the VELINO ecosystem.
+            </p>
+
+            <!-- <div
+                class="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mt-5 rounded-full">
+            </div> -->
+
+        </div>
+
+        <!-- ========================================= -->
+        <!-- PROJECT SLIDER -->
+        <!-- ========================================= -->
+
+        <div class="relative ">
+<style>/* ========================================= */
+    /* SLIDER BUTTON POSITION */
+    /* ========================================= */
+    
+    /* LEFT BUTTON */
+    #slideLeft{
+    
+        left:-55px;      /* move more left */
+        top:50%;
+    }
+    
+    /* RIGHT BUTTON */
+    #slideRight{
+    
+        right:-55px;     /* move more right */
+        top:50%;
+    }
+    
+    /* MOBILE FIX */
+    @media(max-width:768px){
+    
+        #slideLeft{
+            left:5px;
+        }
+    
+        #slideRight{
+            right:5px;
+        }
+    }</style>
+            <!-- LEFT BUTTON --> 
+            <button id="slideLeft" class="slider-btn left-4 ">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+
+            <!-- RIGHT BUTTON -->
+            <button id="slideRight" class="slider-btn right-0">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- SLIDER -->
+            <div id="projectSlider"
+                class="flex gap-8 overflow-x-auto scroll-smoothpx-3 py-5">
+
+                <!-- ========================================= -->
+                <!-- PROJECT 1 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'VELINO IDE',
+'VELINO IDE is a modern custom development environment designed for embedded systems, IoT development, and smart hardware programming. Built using Electron.js and Node.js, the IDE provides a futuristic platform for coding, compiling, uploading, and monitoring embedded applications.',
+'Electron.js, Node.js, JavaScript, HTML5, CSS3, Arduino CLI, Monaco Editor',
+'https://i.postimg.cc/qv6pHgjq/velino-ide.png',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://i.postimg.cc/qv6pHgjq/velino-ide.png"
+                            alt="VELINO IDE"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                            VELINO IDE
+                        </h3>
+
+                        <p class="project-desc">
+                            Futuristic embedded development platform.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 2 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'Bionic Hand',
+'Advanced robotic prosthetic hand designed using embedded systems and gesture recognition technologies to mimic natural human hand movement.',
+'Arduino, Robotics, Servo Motors, Sensors',
+'https://i.postimg.cc/P5gCndvr/maxresdefault.jpg',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://i.postimg.cc/P5gCndvr/maxresdefault.jpg"
+                            alt="Bionic Hand"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                            Bionic Hand
+                        </h3>
+
+                        <p class="project-desc">
+                            Smart robotic prosthetic system.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 3 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'Master Slave Robotic Hand',
+'Gesture-controlled robotic arm system designed to replicate real-time human hand movements using flex sensors and wireless communication.',
+'Flex Sensors, Arduino, Robotics, Embedded Systems',
+'https://i.postimg.cc/kgFcBYNn/brazo-robotico-2.webp',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://i.postimg.cc/kgFcBYNn/brazo-robotico-2.webp"
+                            alt="Robotic Hand"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                            Master Slave Roboti Hand
+                        </h3>
+
+                        <p class="project-desc">
+                            Human-machine interaction robotics.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 4 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'VELINO MECANUM SURVEILLANCE ROBOT',
+'Advanced omni-directional surveillance robot using mecanum wheels for intelligent navigation and autonomous movement.',
+'Mecanum Wheels, Robotics, IoT, Embedded Systems',
+'https://i.postimg.cc/CKR9kVcp/1185c476-1e28-4e75-b7c7-dbd6b84b6fdd.png',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://i.postimg.cc/CKR9kVcp/1185c476-1e28-4e75-b7c7-dbd6b84b6fdd.png"
+                            alt="Mecanum Robot"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                           Velino Mecanum Robot
+                        </h3>
+
+                        <p class="project-desc">
+                            Smart omni-directional surveillance robot.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 5 -->
+                <!-- ========================================= -->
+
+                <!-- PROJECT 5 -->
+<div class="project-card"
+onclick="openProject(
+'VELINO FOOD DELIVERY ROBOT',
+'Autonomous smart robotic delivery system designed for restaurants, hospitals, hotels, and smart environments.',
+'ESP32, Robotics, Automation, IoT',
+'https://i.postimg.cc/dVjVpGF4/Screenshot-2026-05-24-at-3-25-03-PM.png',
+'#',
+'#'
+)">
+
+<!-- IMAGE CONTAINER -->
+<div class="project-image-container food-robot-image">
+
+    <img src="https://i.postimg.cc/dVjVpGF4/Screenshot-2026-05-24-at-3-25-03-PM.png"
+        alt="Food Robot"
+        class="project-image food-img">
+
+</div>
+
+<div class="project-content">
+
+    <h3 class="project-title">
+        Velino Food Delivery Robot
+    </h3>
+
+    <p class="project-desc">
+        Autonomous indoor delivery robot.
+    </p>
+
+</div>
+
+</div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 6 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'VELINO AIRPAD',
+'Wireless ESP32 gaming controller designed for PC, mobile, and IoT gaming applications.',
+'ESP32, BLE, PCB Design, Embedded Systems',
+'https://i.postimg.cc/yYFR6gB1/IMG-3239.avif',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://i.postimg.cc/yYFR6gB1/IMG-3239.avif"
+                            alt="VELINO AIRPAD"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                            Velino AirPad
+                        </h3>
+
+                        <p class="project-desc">
+                            Futuristic wireless gaming controller.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 7 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'VELINO BOARD',
+'Custom smart embedded development board designed for IoT, automation, and robotics applications.',
+'ESP32, PCB Design, Sensors, Relay Control',
+'https://i.postimg.cc/NfzQnR7G/velino-board.png',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://i.postimg.cc/NfzQnR7G/velino-board.png"
+                            alt="VELINO BOARD"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                            Velino Board S1
+                        </h3>
+
+                        <p class="project-desc">
+                            Smart embedded development platform.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 8 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'VADDI Calculator',
+'Finance and EMI calculation application supporting Telugu and English languages.',
+'MIT App Inventor, Android Development',
+'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1470&auto=format&fit=crop',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1470&auto=format&fit=crop"
+                            alt="VADDI Calculator"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                            Vaddi Calculator
+                        </h3>
+
+                        <p class="project-desc">
+                            Smart finance calculation application.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 9 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'VELINO C3 AI PET BOT',
+'AI-inspired smart desktop companion built using ESP32-C3 with OLED animations and interactive expressions.',
+'ESP32-C3, OLED Display, IoT',
+'https://i.postimg.cc/2SLCN32z/velino-c3-ai.jpg',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://i.postimg.cc/2SLCN32z/velino-c3-ai.jpg"
+                            alt="AI PET BOT"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                            Velino C3 AI Bot
+                        </h3>
+
+                        <p class="project-desc">
+                            Smart AI desktop companion robot.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 10 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'Zone Based ADAS',
+'Advanced Driver Assistance System for obstacle detection and intelligent vehicle safety.',
+'ADAS, Embedded Systems, IoT',
+'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1470&auto=format&fit=crop',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1470&auto=format&fit=crop"
+                            alt="ADAS"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                            Zone Based ADAS
+                        </h3>
+
+                        <p class="project-desc">
+                            Intelligent vehicle safety platform.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 11 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'ESP32 C3 MAP NAVIGATOR',
+'Smart GPS navigation and location tracking system using ESP32-C3 technology.',
+'GPS, ESP32-C3, Navigation Systems',
+'https://i.postimg.cc/xC7GWwQ8/mapnavigator.webp',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://i.postimg.cc/xC7GWwQ8/mapnavigator.webp"
+                            alt="MAP NAVIGATOR"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                            Velino Map Navigator
+                        </h3>
+
+                        <p class="project-desc">
+                            Smart GPS navigation system.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- PROJECT 12 -->
+                <!-- ========================================= -->
+
+                <div class="project-card"
+                    onclick="openProject(
+'Smart Medicine Reminder',
+'IoT healthcare reminder system designed to provide medicine alerts and scheduling.',
+'ESP32, RTC Module, IoT',
+'https://i.postimg.cc/Qtx900Wt/IMG-3411.avif',
+'#',
+'#'
+)">
+
+                    <div class="project-image-container">
+                        <img src="https://i.postimg.cc/Qtx900Wt/IMG-3411.avif"
+                            alt="Medicine Reminder"
+                            class="project-image">
+                    </div>
+
+                    <div class="project-content">
+
+                        <h3 class="project-title">
+                            Velino Smart Medicine Reminder
+                        </h3>
+
+                        <p class="project-desc">
+                            Smart healthcare automation system.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================= -->
+<!-- PROJECT 13 -->
+<!-- ========================================= -->
+
+<div class="project-card"
+onclick="openProject(
+'VELINO IR + BLUETOOTH SMART HOME AUTOMATION',
+'VELINO IR + BLUETOOTH SMART HOME AUTOMATION is an intelligent embedded automation system designed to control home appliances using both IR remote and Bluetooth wireless communication technologies. The system integrates relay control, DHT11 temperature monitoring, LCD display interface, mobile app connectivity, manual and automatic control modes, and real-time device management for seamless smart home interaction. Developed using Arduino Uno and ESP32 technologies, the project demonstrates embedded systems engineering, wireless communication, IoT automation, and smart device control for futuristic home automation applications.',
+'Arduino Uno, ESP32, IR Remote, Bluetooth HC-05, IoT, Relay Modules, DHT11 Sensor, Embedded Systems, LCD Display',
+'https://i.postimg.cc/1zQwd6bm/720A0A9E-71B2-4DB3-9EB5-A308C83EB9EA.png',
+'#',
+'#'
+)">
+
+<!-- IMAGE -->
+<div class="project-image-container">
+
+    <img src="https://i.postimg.cc/1zQwd6bm/720A0A9E-71B2-4DB3-9EB5-A308C83EB9EA.png"
+        alt="VELINO IR + BLUETOOTH SMART HOME AUTOMATION"
+        class="project-image">
+
+</div>
+
+<!-- CONTENT -->
+<div class="project-content">
+
+    <h3 class="project-title">
+        Velino + Bluetooth Smart Home Automation
+    </h3>
+
+    <p class="project-desc">
+        IR remote and Bluetooth based smart home automation system.
+    </p>
+
+</div>
+
+</div>
+
+ 
+                <!-- ========================================= -->
+<!-- PROJECT 14 -->
+<!-- ========================================= -->
+
+<div class="project-card"
+onclick="openProject(
+'DUM-E Six Axis Robotic Arm ',
+' Developed using Arduino Uno and Servo technologies, the project demonstrates embedded systems engineering  smart device control for futuristic Robotic controllers.',
+'Arduino Uno, Servo, Potintiometers, Bluetooth HC-05,Relay Modules,Zero PC, LCD Display',
+'https://i.postimg.cc/xjRV0Jvn/IMG-2819-Original.jpg',
+'#',
+'#'
+)">
+
+<!-- IMAGE -->
+<div class="project-image-container">
+
+    <img src="https://i.postimg.cc/xjRV0Jvn/IMG-2819-Original.jpg"
+        alt="VELINO IR + BLUETOOTH SMART HOME AUTOMATION"
+        class="project-image">
+
+</div>
+
+<!-- CONTENT -->
+<div class="project-content">
+
+    <h3 class="project-title">
+      DUM-E  
+    </h3>
+
+    <p class="project-desc">
+        DUM-E Six Axis Robotic Arm 
+    </p>
+
+</div>
+
+</div>
+<!-- PROJECT 15 -->
+<div class="project-card"
+onclick="openProject(
+'VADDI CALCULATOR PRO',
+'Vaddi Calculator Pro is a modern financial web application designed to calculate Simple Interest, Compound Interest, EMI, Loan Repayment, and advanced financial metrics with high accuracy. The platform supports multilingual functionality, responsive design, PDF report generation, real-time calculations, dark/light theme support, and a modern user experience optimized for both desktop and mobile devices. Developed to simplify financial planning and decision-making through fast, accurate, and user-friendly calculations.',
+'HTML5, CSS3, JavaScript, Financial Algorithms, Responsive UI Design, PDF Generation, Vercel Deployment',
+'https://i.postimg.cc/nVy6WLjQ/Chat-GPT-Image-Jun-4-2026-12-24-59-PM.png',
+'https://vaddi-calculator-pro.vercel.app/',
+'https://vaddi-calculator-pro.vercel.app/'
+)">
+
+    <!-- IMAGE -->
+    <div class="project-image-container">
+
+        <img src="https://i.postimg.cc/nVy6WLjQ/Chat-GPT-Image-Jun-4-2026-12-24-59-PM.png"
+             alt="VADDI Calculator Pro"
+             class="project-image">
+
+    </div>
+
+    <!-- CONTENT -->
+    <div class="project-content">
+
+        <h3 class="project-title">
+            VADDI Calculator Pro
+        </h3>
+
+        <p class="project-desc">
+            Advanced EMI, Interest & Financial Planning Web Application.
+        </p>
+
+        <!-- LIVE DEMO BUTTON -->
+        <div class="mt-4">
+
+            <a href="https://vaddi-calculator-pro.vercel.app/"
+               target="_blank"
+               onclick="event.stopPropagation();"
+               class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
+
+                <i class="fas fa-external-link-alt mr-2"></i>
+                Live Demo
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PROJECT MODAL -->
+<!-- ========================================= -->
+
+<div id="projectModal"
+    class="fixed inset-0 bg-black/80 backdrop-blur-md hidden z-50 items-center justify-center p-4">
+
+    <div
+        class="bg-slate-900 w-full max-w-5xl rounded-3xl overflow-hidden border border-cyan-500/20 relative animate-fadeIn">
+
+        <!-- CLOSE -->
+        <button onclick="closeProject()"
+            class="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-800 hover:bg-red-500 transition text-white z-10">
+
+            <i class="fas fa-times"></i>
+
+        </button>
+
+        <div class="grid md:grid-cols-2 gap-0">
+
+            <!-- IMAGE -->
+            <div class="bg-black flex items-center justify-center p-6">
+
+                <img id="modalImage"
+                    src=""
+                    alt=""
+                    class="w-full h-[350px] object-cover rounded-2xl">
+
+            </div>
+
+            <!-- CONTENT -->
+            <div class="p-8 overflow-y-auto max-h-[80vh]">
+
+                <h2 id="modalTitle"
+                    class="text-3xl font-bold text-white mb-5">
+                </h2>
+
+                <!-- ABOUT -->
+                <div class="mb-6">
+
+                    <h3 class="text-cyan-400 text-lg font-semibold mb-3">
+                        About Project
+                    </h3>
+
+                    <p id="modalDescription"
+                        class="text-slate-300 leading-relaxed text-[15px]">
+                    </p>
+
+                </div>
+
+                <!-- TECH -->
+                <div class="mb-8">
+
+                    <h3 class="text-cyan-400 text-lg font-semibold mb-3">
+                        Technologies Used
+                    </h3>
+
+                    <div id="modalTech"
+                        class="flex flex-wrap gap-3">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- CSS -->
+<!-- ========================================= -->
+
+<style>
+
+/* ========================================= */
+/* FOOD ROBOT POPUP IMAGE FIX */
+/* ========================================= */
+
+#modalImage{
+
+width:100%;
+height:350px;
+
+object-fit:contain !important;
+
+background:#020617;
+
+padding:12px;
+
+border-radius:18px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+#modalImage{
+
+    height:220px;
+
+    object-fit:contain !important;
+
+    padding:10px;
+}
+}
+.food-robot-image{
+
+height:240px;
+
+overflow:hidden;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:#020617;
+
+padding:12px;
+}
+
+.food-img{
+
+width:100%;
+height:100%;
+
+object-fit:contain !important;
+
+max-width:100%;
+max-height:100%;
+
+display:block;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.food-robot-image{
+    height:220px;
+}
+}
+
+#projectSlider{
+    scrollbar-width:none;
+}
+
+#projectSlider::-webkit-scrollbar{
+    display:none;
+}
+
+/* CARD */
+.project-card{
+
+    min-width:340px;
+    max-width:340px;
+
+    flex-shrink:0;
+
+    background:rgba(15,23,42,.92);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:.4s ease;
+}
+
+.project-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#06b6d4;
+
+    box-shadow:0 20px 40px rgba(6,182,212,.2);
+}
+
+/* IMAGE CONTAINER */
+.project-image-container{
+
+    width:100%;
+    height:240px;
+
+    overflow:hidden;
+
+    background:#020617;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:12px;
+}
+
+/* IMAGE */
+.project-image{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:16px;
+
+    transition:transform .5s ease;
+}
+
+.project-card:hover .project-image{
+    transform:scale(1.06);
+}
+
+/* CONTENT */
+.project-content{
+    padding:20px;
+}
+
+.project-title{
+
+    color:white;
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.project-desc{
+
+    color:#94a3b8;
+
+    font-size:.95rem;
+
+    line-height:1.6;
+}
+
+/* SLIDER BUTTON */
+.slider-btn{
+
+    position:absolute;
+
+    top:45%;
+
+    transform:translateY(-50%);
+
+    z-index:20;
+
+    width:52px;
+    height:52px;
+
+    border-radius:50%;
+
+    background:rgba(15,23,42,.9);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    color:white;
+
+    transition:.3s ease;
+}
+
+.slider-btn:hover{
+
+    background:rgb(51, 52, 54);
+
+    transform:translateY(-50%) scale(1.1);
+}
+
+/* MODAL */
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.animate-fadeIn{
+    animation:fadeIn .3s ease;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .project-card{
+
+        min-width:88%;
+        max-width:88%;
+    }
+
+    .project-image-container{
+        height:220px;
+    }
+
+    .slider-btn{
+        width:45px;
+        height:45px;
+    }
+
+    #modalImage{
+        height:240px;
+    }
+}
+
+/* ========================================= */
+/* MOBILE MODAL FIX */
+/* ========================================= */
+
+@media(max-width:768px){
+
+/* MODAL CONTAINER */
+#projectModal{
+    padding:12px;
+    align-items:flex-start;
+    overflow-y:auto;
+}
+
+/* MODAL BOX */
+#projectModal .animate-fadeIn{
+
+    width:100%;
+    max-width:100%;
+
+    margin-top:20px;
+    margin-bottom:20px;
+
+    border-radius:22px;
+
+    max-height:95vh;
+
+    overflow-y:auto;
+}
+
+/* GRID FIX */
+#projectModal .grid{
+    grid-template-columns:1fr;
+}
+
+/* IMAGE */
+#modalImage{
+
+    width:100%;
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+}
+
+/* IMAGE WRAPPER */
+#projectModal .bg-black{
+
+    padding:14px;
+}
+
+/* CONTENT */
+#projectModal .p-8{
+
+    padding:20px;
+}
+
+/* TITLE */
+#modalTitle{
+
+    font-size:1.6rem;
+    line-height:1.3;
+}
+
+/* DESCRIPTION */
+#modalDescription{
+
+    font-size:.95rem;
+    line-height:1.8;
+}
+
+/* TECH TAGS */
+#modalTech{
+
+    gap:10px;
+}
+
+#modalTech span{
+
+    font-size:.8rem;
+    padding:8px 14px;
+}
+
+/* CLOSE BUTTON */
+#projectModal button{
+
+    width:42px;
+    height:42px;
+
+    top:10px;
+    right:10px;
+}
+
+}
+
+</style>
+
+<!-- ========================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================= -->
+
+<script>
+
+/* ========================================= */
+/* SLIDER */
+/* ========================================= */
+
+const slider = document.getElementById("projectSlider");
+
+document.getElementById("slideRight").onclick = () => {
+
+    slider.scrollBy({
+        left:380,
+        behavior:"smooth"
+    });
+
+};
+
+document.getElementById("slideLeft").onclick = () => {
+
+    slider.scrollBy({
+        left:-380,
+        behavior:"smooth"
+    });
+
+};
+
+/* ========================================= */
+/* OPEN PROJECT */
+/* ========================================= */
+
+function openProject(title, description, tech, image, github, live){
+
+    document.getElementById("projectModal").classList.remove("hidden");
+
+    document.getElementById("projectModal").classList.add("flex");
+
+    document.getElementById("modalTitle").innerText = title;
+
+    document.getElementById("modalDescription").innerText = description;
+
+    document.getElementById("modalImage").src = image;
+
+    /* TECH TAGS */
+
+    const techContainer = document.getElementById("modalTech");
+
+    techContainer.innerHTML = "";
+
+    const techArray = tech.split(",");
+
+    techArray.forEach(item => {
+
+        const tag = document.createElement("span");
+
+        tag.className =
+            "px-4 py-2 rounded-full bg-slate-800 text-cyan-400 text-sm border border-cyan-500/20";
+
+        tag.innerText = item.trim();
+
+        techContainer.appendChild(tag);
+
+    });
+
+}
+
+/* ========================================= */
+/* CLOSE PROJECT */
+/* ========================================= */
+
+function closeProject(){
+
+    document.getElementById("projectModal").classList.add("hidden");
+
+    document.getElementById("projectModal").classList.remove("flex");
+
+}
+
+/* ========================================= */
+/* CLICK OUTSIDE CLOSE */
+/* ========================================= */
+
+window.onclick = function(e){
+
+    const modal = document.getElementById("projectModal");
+
+    if(e.target === modal){
+
+        closeProject();
+
+    }
+
+}
+
+</script>
+   <!-- SECTION DIVIDER -->
+  <div class="flex items-center justify-center my-2 bg-darker">
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+    <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+        portfolio
+    </span>
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+</div>
+
+<!-- CSS -->
+<style>
+
+.project-card{
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #0f172a;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.project-card:hover{
+    transform: translateY(-10px);
+    border-color: rgba(34,211,238,0.5);
+    box-shadow: 0 20px 40px rgba(34,211,238,0.15);
+}
+
+.project-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.project-card:hover .project-image{
+    transform: scale(1.08);
+}
+
+.project-title{
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+</style>
+
+
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-2xl md:text-3xl font-bold mb-4">
+                    Get In  <span class="gradient-text">Touch</span>
+                </h3>
+                <!-- <h3 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h3> -->
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <p class="text-slate-400 mb-8 leading-relaxed">
+                        I am actively seeking opportunities in Embedded Systems, IoT, Software Development,
+                        and Automation Engineering. If you have a suitable role, project collaboration,
+                        internship, or freelance opportunity, feel free to connect with me.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-slate-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Location</h4>
+                                <p class="text-slate-400">
+                                    Hyderabad / Warangal, Telangana, India
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-slate-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email</h4>
+                                <p class="text-slate-400">shivavelishoju0827@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-slate-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Phone</h4>
+                                <p class="text-slate-400">+91 9963761162</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   <!-- FOLLOW ME -->
+<div class="mt-8">
+
+    <h4 class="font-bold mb-4">
+        Follow Me
+    </h4>
+
+    <!-- SOCIAL ICONS -->
+    <div class="flex flex-wrap gap-4">
+
+        <!-- GITHUB -->
+        <a href="#"
+            class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-primary">
+
+            <i class="fab fa-github text-xl"></i>
+
+        </a>
+
+        <!-- LINKEDIN -->
+        <a href="https://www.linkedin.com/in/shiva-velishoju-6650982b1/"
+            class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-blue-600">
+
+            <i class="fab fa-linkedin-in text-xl"></i>
+
+        </a>
+
+        <!-- WHATSAPP -->
+        <a href="https://wa.me/919963761162"
+            target="_blank"
+            class="social-icon w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-green-500">
+
+            <i class="fab fa-whatsapp text-xl"></i>
+
+        </a>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- RESUME SECTION -->
+    <!-- ========================================= -->
+
+    <div class="mt-8">
+
+        <h4 class="font-bold mb-4">
+            Download Resume
+        </h4>
+
+        <div class="resume-wrapper">
+
+            <!-- SELECT -->
+            <select id="resumeSelect"
+                class="resume-select">
+
+                <option value="">
+                    Select Resume
+                </option>
+
+                <option value="https://drive.google.com/file/d/1h2V1ZmvhcwtC1cqu-4ip1dtJnT8L5IXO/view?usp=drive_link">
+                    ECE Resume
+                </option>
+
+                <option value="https://drive.google.com/file/d/11q0IcUZPtw736Mo_QFgI-SPiHFKhtViW/view?usp=drive_link">
+                    Java Developer Resume
+                </option>
+
+                <option value="https://drive.google.com/file/d/1Z_XZ1UdlLzjCqylogyV94QWNSeJt7Etp/view?usp=drive_link">
+                    Manual Testing Resume
+                </option>
+
+            </select>
+
+            <!-- BUTTON -->
+            <button onclick="downloadResume()"
+                class="resume-btn">
+
+                <i class="fas fa-download mr-2"></i>
+                Download CV
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div><style>/* ========================================= */
+    /* RESUME SECTION */
+    /* ========================================= */
+    
+    .resume-wrapper{
+    
+        display:flex;
+        gap:14px;
+    
+        align-items:center;
+    
+        flex-wrap:wrap;
+    }
+    
+    .resume-select{
+    
+        background:#1e293b;
+    
+        border:1px solid rgba(255,255,255,.1);
+    
+        color:white;
+    
+        padding:14px 20px;
+    
+        border-radius:999px;
+    
+        outline:none;
+    
+        min-width:260px;
+    
+        transition:.3s ease;
+    }
+    
+    .resume-select:focus{
+    
+        border-color:#06b6d4;
+    
+        box-shadow:0 0 15px rgba(6,182,212,.25);
+    }
+    
+    .resume-btn{
+    
+        padding:14px 28px;
+    
+        border-radius:999px;
+    
+        background:linear-gradient(to right,#06b6d4,#3b82f6);
+    
+        color:white;
+    
+        font-weight:600;
+    
+        transition:.3s ease;
+    
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+    
+    .resume-btn:hover{
+    
+        transform:translateY(-3px);
+    
+        box-shadow:0 10px 25px rgba(6,182,212,.35);
+    }
+    
+    /* MOBILE */
+    @media(max-width:768px){
+    
+        .resume-wrapper{
+    
+            flex-direction:column;
+            align-items:stretch;
+        }
+    
+        .resume-select,
+        .resume-btn{
+    
+            width:100%;
+        }
+    }</style>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
+                    <form action="https://formsubmit.co/shivavelishoju0827@gmail.com"
+      method="POST"
+      class="space-y-6">
+
+    <!-- Disable Captcha -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- Redirect After Submit -->
+    <input type="hidden" name="_next" value="shivavelishoju0827@gmail.com">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div>
+            <label for="name" class="block mb-2 font-medium">
+                Your Name
+            </label>
+
+            <input type="text"
+                   name="name"
+                   id="name"
+                   class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none"
+                   required>
+        </div>
+
+        <div>
+            <label for="email" class="block mb-2 font-medium">
+                Your Email
+            </label>
+
+            <input type="email"
+                   name="email"
+                   id="email"
+                   class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none"
+                   required>
+        </div>
+
+    </div>
+
+    <div>
+        <label for="subject" class="block mb-2 font-medium">
+            Subject
+        </label>
+
+        <input type="text"
+               name="subject"
+               id="subject"
+               class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none"
+               required>
+    </div>
+
+    <div>
+        <label for="message" class="block mb-2 font-medium">
+            Message
+        </label>
+
+        <textarea name="message"
+                  id="message"
+                  rows="9"
+                  class="w-full px-4 py-3 rounded-lg contact-input focus:outline-none"
+                  required></textarea>
+    </div>
+
+    <button type="submit"
+            class="px-8 py-3 rounded-full btn-primary font-medium w-full">
+
+        Send Message
+        <i class="fas fa-paper-plane ml-2"></i>
+    </button>
+
+</form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- ========================================= -->
+<!-- PROFESSIONAL FOOTER -->
+<!-- ========================================= -->
+
+<footer class="bg-[#0b1120] border-t border-slate-800 pt-16 pb-8 relative overflow-hidden">
+
+    <!-- Background Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/10 blur-3xl rounded-full opacity-20"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+
+        <!-- TOP FOOTER -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12">
+
+            <!-- BRAND -->
+            <div>
+
+                <h2 class="text-3xl font-bold gradient-text mb-2">
+                    Shiva Velishoju
+                </h2>
+
+                <p class="text-cyan-400 font-medium mb-4">
+                    Embedded Systems & Software Developer
+                </p>
+
+                <p class="text-slate-400 leading-relaxed">
+                    Electronics and Communication Engineering graduate with hands-on experience
+                    in Embedded Systems, IoT, Robotics, Automation, Java Development,
+                    Front-End Development, and Manual Testing. Passionate about building
+                    innovative technology solutions that bridge hardware and software to
+                    solve real-world problems through smart engineering and modern software.
+                </p>
+
+            </div>
+
+            <!-- QUICK LINKS -->
+            <div>
+
+                <h3 class="text-xl font-semibold mb-5 text-white">
+                    Quick Links
+                </h3>
+
+                <ul class="space-y-3">
+
+                    <li>
+                        <a href="#home"
+                           class="text-slate-400 hover:text-primary transition duration-300">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#about"
+                           class="text-slate-400 hover:text-primary transition duration-300">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#experience"
+                           class="text-slate-400 hover:text-primary transition duration-300">
+                            Experience
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#achievements"
+                           class="text-slate-400 hover:text-primary transition duration-300">
+                           Achievements
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#skills"
+                           class="text-slate-400 hover:text-primary transition duration-300">
+                            Skills
+                        </a>
+                    </li>
+
+                    
+                    <li>
+                        <a href="#Tools"
+                           class="text-slate-400 hover:text-primary transition duration-300">
+                            Tools
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#projects"
+                           class="text-slate-400 hover:text-primary transition duration-300">
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact"
+                           class="text-slate-400 hover:text-primary transition duration-300">
+                            Resume
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact"
+                           class="text-slate-400 hover:text-primary transition duration-300">
+                            Contact
+                        </a>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
+            
+            <!-- CONNECT -->
+            <div>
+
+                <h3 class="text-xl font-semibold mb-5 text-white">
+                    Connect With Me
+                </h3>
+
+                <p class="text-slate-400 mb-6 leading-relaxed">
+                    Connect with me for professional networking, project collaborations,
+                    job opportunities, internships, freelance work, and technology discussions.
+                </p>
+
+                <!-- SOCIAL ICONS -->
+                <div class="flex gap-4 flex-wrap">
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/shivavelishoju"
+                       target="_blank"
+                       class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 transition duration-300 flex items-center justify-center hover:scale-110 shadow-lg">
+
+                        <i class="fab fa-github text-lg"></i>
+
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/shiva-velishoju-6650982b1/"
+                       target="_blank"
+                       class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-blue-600 transition duration-300 flex items-center justify-center hover:scale-110 shadow-lg">
+
+                        <i class="fab fa-linkedin-in text-lg"></i>
+
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/919963761162"
+                       target="_blank"
+                       class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-green-500 transition duration-300 flex items-center justify-center hover:scale-110 shadow-lg">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/freshers.job.alerts/"
+                       target="_blank"
+                       class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-pink-600 transition duration-300 flex items-center justify-center hover:scale-110 shadow-lg">
+
+                        <i class="fab fa-instagram text-lg"></i>
+
+                    </a>
+
+                    <!-- Email -->
+                    <!-- <a href="mailto:shivavelishoju0827@gmail.com"
+                       class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-cyan-600 transition duration-300 flex items-center justify-center hover:scale-110 shadow-lg">
+
+                        <i class="fas fa-envelope text-lg"></i> -->
+
+                    </a>
+
+                </div>
+
+                <!-- Availability Badge -->
+                <div class="mt-6 inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 px-4 py-2 rounded-full">
+
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+
+                    <span class="text-green-400 text-sm font-medium">
+                        Open to Full-Time Opportunities
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTER BOTTOM -->
+        <div class="border-t border-slate-800/80 mt-8 pt-8">
+
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-5">
+
+                <!-- COPYRIGHT -->
+                <div class="text-center lg:text-left">
+
+                    <h4 class="text-lg font-semibold text-white mb-1">
+                        Shiva Velishoju
+                    </h4>
+
+                    <p class="text-slate-500 text-sm">
+                        © 2026 Shiva Velishoju. All rights reserved.
+                    </p>
+
+                </div>
+
+                <!-- CENTER TEXT -->
+                <div class="text-center text-slate-400 text-sm max-w-xl">
+
+                    Building the future through Embedded Systems,
+                    IoT, Robotics, Automation & Software Development.
+
+                </div>
+
+                <!-- QUICK NAV -->
+                <div class="flex items-center gap-6 text-sm">
+
+                    <a href="#home"
+                       class="text-slate-500 hover:text-primary transition duration-300">
+                        Home
+                    </a>
+
+                    <a href="#projects"
+                       class="text-slate-500 hover:text-primary transition duration-300">
+                        Projects
+                    </a>
+
+                    <a href="#contact"
+                       class="text-slate-500 hover:text-primary transition duration-300">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+<!-- BACK TO TOP BUTTON -->
+<button id="back-to-top"
+class="fixed bottom-8 right-8 w-14 h-14 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white shadow-2xl flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:scale-110 z-50">
+
+    <i class="fas fa-arrow-up text-lg"></i>
+
+</button>
+<style>/* ========================================= */
+    /* BACK TO TOP BUTTON */
+    /* ========================================= */
+    
+    #back-to-top{
+    
+        position:fixed;
+    
+        bottom:30px;
+        right:30px;
+    
+        width:56px;
+        height:56px;
+    
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    
+        border:none;
+    
+        border-radius:px;
+    
+        background:
+        linear-gradient(
+        135deg,
+        #06b6d4,
+        #2563eb
+        );
+    
+        color:white;
+    
+        font-size:18px;
+    
+        cursor:pointer;
+    
+        z-index:99999;
+    
+        opacity:0;
+        visibility:hidden;
+    
+        transition:.35s ease;
+    
+        box-shadow:
+        0 10px 30px rgba(6,182,212,.35);
+    }
+    
+    /* SHOW BUTTON */
+    
+    #back-to-top.show{
+    
+        opacity:1;
+        visibility:visible;
+    }
+    
+    /* HOVER */
+    
+    #back-to-top:hover{
+    
+        transform:
+        translateY(-5px)
+        scale(1.05);
+    
+        box-shadow:
+        0 15px 35px rgba(37,99,235,.4);
+    }
+    
+    /* MOBILE */
+    
+    @media(max-width:768px){
+    
+        #back-to-top{
+    
+            width:50px;
+            height:50px;
+    
+            right:18px;
+            bottom:20px;
+    
+            border-radius:50px;
+        }
+    }</style>
+    <script>
+
+        /* ========================================= */
+        /* BACK TO TOP */
+        /* ========================================= */
+        
+        const backToTopBtn =
+        document.getElementById("back-to-top");
+        
+        /* SHOW BUTTON */
+        
+        window.addEventListener("scroll",()=>{
+        
+            if(window.scrollY > 300){
+        
+                backToTopBtn.classList.add("show");
+        
+            }else{
+        
+                backToTopBtn.classList.remove("show");
+            }
+        
+        });
+        
+        /* SCROLL TO TOP */
+        
+        backToTopBtn.addEventListener("click",()=>{
+        
+            window.scrollTo({
+        
+                top:0,
+                behavior:"smooth"
+            });
+        
+        });
+        
+        </script>
+    <script>
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    // Update active link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+            
+            // Show/hide back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (scrollPosition > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        // Back to top button
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animate skill bars on scroll
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const skillsSection = document.getElementById('skills');
+            const skillsSectionTop = skillsSection.offsetTop;
+            const windowHeight = window.innerHeight;
+            
+            if (window.scrollY > skillsSectionTop - windowHeight + 200) {
+                skillBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+                
+                // Remove event listener after animation
+                window.removeEventListener('scroll', animateSkillBars);
+            }
+        };
+        
+        window.addEventListener('scroll', animateSkillBars);
+    </script>
+
+<script>
+    function openProject(title, description, tech, image, demo, code) {
+    
+        document.getElementById("projectModal").classList.remove("hidden");
+        document.getElementById("projectModal").classList.add("flex");
+    
+        document.body.style.overflow = "hidden";
+    
+        document.getElementById("modalTitle").innerText = title;
+        document.getElementById("modalDescription").innerText = description;
+        document.getElementById("modalImage").src = image;
+    
+        document.getElementById("modalDemo").href = demo;
+        document.getElementById("modalCode").href = code;
+    
+        const techContainer = document.getElementById("modalTech");
+        techContainer.innerHTML = "";
+    
+        tech.split(",").forEach(item => {
+            techContainer.innerHTML += `
+                <span class="px-4 py-2 bg-slate-700 rounded-full text-sm text-white border border-cyan-500/20">
+                    ${item.trim()}
+                </span>
+            `;
+        });
+    }
+    
+    function closeProject() {
+        document.getElementById("projectModal").classList.add("hidden");
+        document.getElementById("projectModal").classList.remove("flex");
+    
+        document.body.style.overflow = "auto";
+    }
+    
+    window.onclick = function(event) {
+        const modal = document.getElementById("projectModal");
+    
+        if(event.target === modal) {
+            closeProject();
+        }
+    }
+    
+    window.addEventListener("keydown", function(event) {
+        if(event.key === "Escape") {
+            closeProject();
+        }
+    });
+    </script>
+
+<script>
+
+    function downloadResume() {
+    
+        const resumePath = document.getElementById("resumeSelect").value;
+    
+        if (resumePath === "") {
+            alert("Please select a resume");
+            return;
+        }
+    
+        // Create hidden download link
+        const link = document.createElement("a");
+    
+        link.href = resumePath;
+    
+        link.setAttribute("download", "");
+    
+        document.body.appendChild(link);
+    
+        link.click();
+    
+        document.body.removeChild(link);
+    }
+    
+    </script>
+
+<script>
+
+    const searchInput = document.getElementById("portfolioSearch");
+    
+    searchInput.addEventListener("keypress", function(e) {
+    
+        if (e.key === "Enter") {
+    
+            const value = searchInput.value.toLowerCase();
+    
+            // Match sections
+            if (value.includes("about")) {
+                document.querySelector("#about")
+                    .scrollIntoView({ behavior: "smooth" });
+    
+            } else if (value.includes("skill")) {
+                document.querySelector("#skills")
+                    .scrollIntoView({ behavior: "smooth" });
+    
+            } else if (value.includes("project")) {
+                document.querySelector("#projects")
+                    .scrollIntoView({ behavior: "smooth" });
+    
+            } else if (value.includes("contact")) {
+                document.querySelector("#contact")
+                    .scrollIntoView({ behavior: "smooth" });
+    
+            } else if (
+                value.includes("embedded") ||
+                value.includes("iot") ||
+                value.includes("web") ||
+                value.includes("mobile")
+            ) {
+                document.querySelector("#projects")
+                    .scrollIntoView({ behavior: "smooth" });
+    
+            } else {
+    
+                alert("No matching section found");
+    
+            }
+    
+        }
+    
+    });
+    
+    </script>
+    <script>
+        const slides = document.querySelectorAll('.bg-slide');
+        let current = 0;
+        
+        function changeSlide() {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }
+        
+        // Change every 5 seconds
+        setInterval(changeSlide, 5000);
+        </script>
+        
+
+    <!-- PROJECT MODAL -->
+<div id="projectModal"
+class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-3 sm:p-4 backdrop-blur-sm overflow-y-auto">
+
+    <!-- MODAL BOX -->
+    <div class="bg-slate-900
+                w-full
+                max-w-[95vw]
+                lg:max-w-4xl
+                rounded-3xl
+                overflow-hidden
+                relative
+                border border-cyan-500/20
+                shadow-2xl shadow-cyan-500/10
+                my-10">
+
+        <!-- IMAGE CONTAINER -->
+        <div class="w-full
+                    h-[200px]
+                    sm:h-[260px]
+                    md:h-[320px]
+                    lg:h-[350px]
+                    bg-black
+                    flex
+                    items-center
+                    justify-center
+                    overflow-hidden">
+
+            <img id="modalImage"
+                 src=""
+                 alt="Project Image"
+                 class="max-w-full
+                        max-h-full
+                        object-contain
+                        object-center
+                        transition duration-300">
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="p-4 sm:p-5 lg:p-6">
+
+            <!-- TITLE -->
+            <h2 id="modalTitle"
+                class="text-xl sm:text-2xl lg:text-3xl
+                       font-bold
+                       mb-3
+                       gradient-text
+                       text-center sm:text-left
+                       leading-tight">
+            </h2>
+
+           <!-- Description -->
+<p id="modalDescription"
+class="text-slate-300 mb-4 leading-relaxed text-xs md:text-20">
+</p>
+
+            <!-- TECHNOLOGIES -->
+            <div id="modalTech"
+                 class="flex flex-wrap gap-2 mb-6 justify-center sm:justify-start">
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="flex flex-col sm:flex-row flex-wrap gap-3 justify-center">
+
+                <!-- LIVE DEMO -->
+                <a id="modalDemo"
+                   href="#"
+                   target="_blank"
+                   class="w-full sm:w-auto
+                          text-center
+                          px-2 py-2
+                          text-sm
+                          rounded-full
+                          border border-cyan-500
+                          text-cyan-400
+                          hover:bg-cyan-500
+                          hover:text-white
+                          transition duration-300">
+
+                    <i class="fas fa-external-link-alt mr-2"></i>
+                    Live Demo
+
+                </a>
+
+                <!-- GITHUB -->
+                <a id="modalCode"
+                   href="#"
+                   target="_blank"
+                   class="w-full sm:w-auto
+                          text-center
+                          px-4 py-2
+                          text-sm
+                          rounded-full
+                          border border-cyan-500
+                          text-cyan-400
+                          hover:bg-cyan-500
+                          hover:text-white
+                          transition duration-300">
+
+                    <i class="fab fa-github mr-2"></i>
+                    GitHub
+
+                </a>
+
+                <!-- CLOSE -->
+                <button onclick="closeProject()"
+                class="w-full sm:w-auto
+                       px-4 py-2
+                       text-sm
+                       rounded-full
+                       border border-cyan-500
+                       text-cyan-400
+                       hover:bg-cyan-500
+                       hover:text-white
+                       transition duration-300">
+
+                    <i class="fas fa-times mr-2"></i>
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+    
+    </div>
+</body>
+</html>
