@@ -506,7 +506,7 @@
     <nav class="fixed w-full bg-darker/80 backdrop-blur-sm z-50 shadow-lg">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+                <a href="#" class="text-2xl font-bold gradient-text ">Portfolio</a>
 
                 <div class="search-container">
 
@@ -532,6 +532,7 @@
                 <div class="hidden md:flex space-x-8">
                     <a href="#home" class="nav-link active">Home</a>
                     <a href="#about" class="nav-link">About</a>
+                    <a href="#education" class="nav-link">Education</a>
                     <a href="#experience" class="nav-link">Experience</a>
                     <a href="#skills" class="nav-link">Skills</a>
                     <a href="#achievements" class="nav-link">Achievements</a>
@@ -547,6 +548,7 @@
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2">
                 <a href="#home" class="block py-2 nav-link active">Home</a>
                 <a href="#about" class="block py-2 nav-link">About</a>
+                <a href="#education" class="block py-2 nav-link">Education</a>
                 <a href="#experience" class="block py-2 nav-link">Experience</a>
                 <a href="#skills" class="block py-2 nav-link">Skills</a>
                 <a href="#achievements" class="block py-2 nav-link">Achievements</a>
@@ -565,17 +567,63 @@
     <div class="splash-line"></div>
 
     <div class="apple-logo-text">
-        portfolio
+        <span>P</span>
+        <span>O</span>
+        <span>R</span>
+        <span>T</span>
+        <span>F</span>
+        <span>O</span>
+        <span>L</span>
+        <span>I</span>
+        <span>O</span>
     </div>
 
     <div class="splash-line"></div>
 
     <div class="splash-tagline">
-        <!-- Developed By  -->
         Shiva Velishoju
     </div>
 
 </div>
+<style>.apple-logo-text{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    font-size:4rem;
+    font-weight:100;
+    letter-spacing:15px;
+    perspective:1000px;
+}
+
+.apple-logo-text span{
+    display:inline-block;
+    opacity:0;
+    transform:rotateY(90deg);
+    animation:letterRotate 0.9s ease forwards;
+}
+
+/* Delay each letter */
+.apple-logo-text span:nth-child(1){animation-delay:0.1s;}
+.apple-logo-text span:nth-child(2){animation-delay:0.2s;}
+.apple-logo-text span:nth-child(3){animation-delay:0.3s;}
+.apple-logo-text span:nth-child(4){animation-delay:0.4s;}
+.apple-logo-text span:nth-child(5){animation-delay:0.5s;}
+.apple-logo-text span:nth-child(6){animation-delay:0.6s;}
+.apple-logo-text span:nth-child(7){animation-delay:0.7s;}
+.apple-logo-text span:nth-child(8){animation-delay:0.8s;}
+.apple-logo-text span:nth-child(9){animation-delay:0.9s;}
+
+@keyframes letterRotate{
+    0%{
+        opacity:0;
+        transform:rotateY(90deg);
+    }
+
+    100%{
+        opacity:1;
+        transform:rotateY(0deg);
+    }
+}</style>
 <script>
     window.addEventListener("load", () => {
     
@@ -895,7 +943,108 @@
     <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
 
 </div>
-        
+        <!-- Education Section -->
+<section id="education" class="py-20 bg-transpart">
+    <div class="container mx-auto px-6">
+
+        <!-- Section Title -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                Academic <span class="gradient-text">Background</span>
+            </h2>
+            <p class="text-slate-400 max-w-1xl mx-auto">
+                My educational journey has provided a strong foundation in engineering,
+                analytical thinking, and software development principles.
+                
+            </p>
+            <br>
+
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="max-w-4xl mx-auto relative">
+
+            <!-- Vertical Line -->
+            <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-secondary transform md:-translate-x-1/2"></div>
+
+            <!-- B.Tech -->
+            <div class="relative mb-12 md:w-1/2 md:pr-12 md:text-right">
+                <div class="absolute left-0 md:right-0 md:left-auto top-6 w-4 h-4 bg-cyan-400 rounded-full border-4 border-dark"></div>
+
+                <div class="bg-darker p-6 rounded-xl shadow-lg hover:scale-105 transition duration-300">
+                    <span class="text-cyan-400 font-semibold">
+                        2019 - 2023
+                    </span>
+                    <h3 class="text-xl font-bold mt-2">
+                        Bachelor of Technology (ECE)
+                    </h3>
+                    <p class="text-slate-400 mt-2">
+                        Electronics & Communication Engineering</p>
+                    <p class="text-slate-400 mt-2">
+                        Vaagdevi College of Engineering, Bollikunta, Warangal
+                    </p>
+                    <p class="text-green-400 font-semibold mt-2">
+                        CGPA: 7.85
+                    </p>
+                </div>
+            </div>
+
+            <!-- Intermediate -->
+            <div class="relative mb-12 md:w-1/2 md:ml-auto md:pl-12">
+                <div class="absolute left-0 top-6 w-4 h-4 bg-cyan-400 rounded-full border-4 border-dark"></div>
+
+                <div class="bg-darker p-6 rounded-xl shadow-lg hover:scale-105 transition duration-300">
+                    <span class="text-cyan-400 font-semibold">
+                        2017 - 2019
+                    </span>
+                    <h3 class="text-xl font-bold mt-2">
+                        Intermediate (MPC)
+                    </h3>
+                    <p class="text-slate-400 mt-2">
+                        SR Junior College, Hunter Road, Warangal
+                    </p>
+                    <p class="text-green-400 font-semibold mt-2">
+                         85% percentage
+                    </p>
+                </div>
+            </div>
+
+            <!-- SSC -->
+            <div class="relative md:w-1/2 md:pr-12 md:text-right">
+                <div class="absolute left-0 md:right-0 md:left-auto top-6 w-4 h-4 bg-cyan-400 rounded-full border-4 border-dark"></div>
+
+                <div class="bg-darker p-6 rounded-xl shadow-lg hover:scale-105 transition duration-300">
+                    <span class="text-cyan-400 font-semibold">
+                        2017
+                    </span>
+                    <h3 class="text-xl font-bold mt-2">
+                        Secondary School Certificate (SSC)
+                    </h3>
+                    <p class="text-slate-400 mt-2">
+                        Telangana State Model School, Vanchanagiri, Warangal
+                    </p>
+                    <p class="text-green-400 font-semibold mt-2">
+                        92% percentage
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+   <!-- SECTION DIVIDER -->
+   <div class="flex items-center justify-center my-2 bg-darker">
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+    <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+        portfolio
+    </span>
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+</div>
 <!-- Experience & Projects Section -->
 <section id="experience" class="py-20 bg-transpart">
 
@@ -1092,7 +1241,7 @@
         background:linear-gradient(
             45deg,
             transparent,
-            rgba(13, 21, 22, 0.12),
+            rgba(10, 11, 11, 0.12),
             transparent
         );
         transform:rotate(25deg);
