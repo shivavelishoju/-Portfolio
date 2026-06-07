@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VELINO Website</title>
+    <title>Portfolio Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -636,7 +636,7 @@
             </h2>
             
             <h3 class="text-2xl md:text-2xl font-semibold mb-6 text-slate-300">
-                Java Developer | Front-End Developer 
+                Java Developer | Front-End Developer |
                 Manual Tester  
             </h3>
             
@@ -674,6 +674,72 @@
                 </a>
             </div>
 
+<!-- Availability Badge -->
+<div class="mt-6 inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 px-4 py-2 rounded-full">
+
+    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+
+    <span id="roleText" class="text-green-400 text-sm font-medium role-animation">
+        Open to Java Developer Opportunities
+    </span>
+
+</div>
+
+
+<style>
+    .role-animation{
+    display:inline-block;
+    transition:all .5s ease;
+}
+
+.role-slide-out{
+    opacity:0;
+    transform:translateY(-15px);
+}
+
+.role-slide-in{
+    opacity:1;
+    transform:translateY(0);
+}
+</style>
+<script>
+    const roles = [
+        // "Open to Java Developer Opportunities",
+        // "Open to Front-End Developer Opportunities",
+        // "Open to Manual Testing Opportunities",
+        // "Open to Embedded Systems Opportunities"
+        "Open to Java Developer Roles",
+    "Open to Front-End Roles",
+    "Open to Manual Testing Roles",
+    "Open to Embedded Systems Roles",
+    "Open to Software Engineer Roles"
+    ];
+    
+    const roleText = document.getElementById("roleText");
+    let currentRole = 0;
+    
+    setInterval(() => {
+    
+        roleText.classList.add("role-slide-out");
+    
+        setTimeout(() => {
+    
+            currentRole = (currentRole + 1) % roles.length;
+            roleText.textContent = roles[currentRole];
+    
+            roleText.classList.remove("role-slide-out");
+            roleText.classList.add("role-slide-in");
+    
+            setTimeout(() => {
+                roleText.classList.remove("role-slide-in");
+            }, 500);
+    
+        }, 300);
+    
+    }, 3000);
+    </script>
+
+    
             <!-- Scroll To Top Button -->
 <button id="topBtn">
     <i class="fas fa-arrow-up"></i>
@@ -791,10 +857,10 @@
                         </h4>
                 
                         <h4 class="font-semibold">
-                            Skills: Java, MySQL, HTML, CSS, JavaScript
-                            <span class="text-slate-300 font-normal">
+                            Skills: Java, MySQL, HTML, CSS, JavaScript, Manual testing, Embedded Systems
+                            <!-- <span class="text-slate-300 font-normal">
                                 Java Developer
-                            </span>
+                            </span> -->
                         </h4>
                 
                         <h4 class="font-semibold">
@@ -4272,6 +4338,8 @@ display:block;
                 </div>
             </div>
         </div>
+
+        
     </section>
 
     
