@@ -585,13 +585,17 @@
     </div>
 
 </div>
-<style>.apple-logo-text{
+<style>
+.apple-logo-text{
     display:flex;
     justify-content:center;
-    gap:6px;
-    font-size:4rem;
+    align-items:center;
+    flex-wrap:nowrap;
+
+    font-size:clamp(1.5rem, 8vw, 4rem);
+    letter-spacing:clamp(10px, 0.8vw, 15px);
+
     font-weight:100;
-    letter-spacing:15px;
     perspective:1000px;
 }
 
