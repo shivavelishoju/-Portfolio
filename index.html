@@ -3129,6 +3129,7 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                             alt="VELINO IDE"
                             class="project-image">
                     </div>
+                    
 
                     <div class="project-content">
 
@@ -3783,9 +3784,97 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
 </div>
 
 </div>
- <!-- ========================================= -->
-                <!-- PROJECT 2 -->
-                <!-- ========================================= -->
+<!-- ========================================= -->
+<!-- PROJECT 15 -->
+<!-- ========================================= -->
+
+<!-- VELINO TYPEX -->
+<div class="project-card">
+    <div class="project-image-container">
+
+        <img id="typexSlider"
+             src="https://i.postimg.cc/8zJSFFxZ/Screenshot-2026-06-11-at-6-54-20-PM.png"
+             alt="Velino TypeX"
+             class="project-image">
+    
+    </div>
+
+    
+    <div class="project-content">
+
+        <h3 class="project-title">
+            Velino TypeX
+        </h3>
+
+        <p class="project-desc">
+            Professional Typing Speed Trainer with WPM Tracking, Accuracy Analysis, Timer Modes, Themes and Performance Statistics.
+        </p>
+
+        <div class="tech-stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Typing Trainer</span>
+            <span>Analytics</span>
+            <span>Responsive UI</span>
+        </div>
+        <script>
+
+            const typexImages = [
+            
+            "https://i.postimg.cc/8zJSFFxZ/Screenshot-2026-06-11-at-6-54-20-PM.png",
+            "https://i.postimg.cc/28J5XfDt/Screenshot-2026-06-11-at-7-01-21-PM.png",
+            "https://i.postimg.cc/fTFbghNr/Screenshot-2026-06-11-at-7-01-42-PM.png",
+            // "https://i.postimg.cc/zzzzzzzz/image4.png"
+            
+            ];
+            
+            let currentTypexImage = 0;
+            
+            setInterval(()=>{
+            
+            currentTypexImage++;
+            
+            if(currentTypexImage >= typexImages.length){
+            currentTypexImage = 0;
+            }
+            
+            document.getElementById("typexSlider").src =
+            typexImages[currentTypexImage];
+            
+            },3000);
+            
+            </script>
+            <style>.project-image{
+                width:100%;
+                height:220px;
+                object-fit:cover;
+                border-radius:12px;
+                transition:opacity .6s ease;
+                }</style>
+
+        <!-- LIVE DEMO BUTTON -->
+        <div class="mt-4">
+
+            <a href="https://velino-type-x.vercel.app/"
+               target="_blank"
+               onclick="event.stopPropagation();"
+               class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
+
+                <i class="fas fa-external-link-alt mr-2"></i>
+                Live Demo
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ========================================= -->
+<!-- PROJECT 16 -->
+<!-- ========================================= -->
+
 
                 <div class="project-card">
 
