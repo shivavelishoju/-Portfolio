@@ -5178,49 +5178,66 @@ class="fixed bottom-8 right-8 w-14 h-14 rounded-2xl bg-gradient-to-r from-primar
 
 <script>
 
-    const searchInput = document.getElementById("portfolioSearch");
-    
-    searchInput.addEventListener("keypress", function(e) {
-    
-        if (e.key === "Enter") {
-    
-            const value = searchInput.value.toLowerCase();
-    
-            // Match sections
-            if (value.includes("about")) {
-                document.querySelector("#about")
-                    .scrollIntoView({ behavior: "smooth" });
-    
-            } else if (value.includes("skill")) {
-                document.querySelector("#skills")
-                    .scrollIntoView({ behavior: "smooth" });
-    
-            } else if (value.includes("project")) {
-                document.querySelector("#projects")
-                    .scrollIntoView({ behavior: "smooth" });
-    
-            } else if (value.includes("contact")) {
-                document.querySelector("#contact")
-                    .scrollIntoView({ behavior: "smooth" });
-    
-            } else if (
-                value.includes("embedded") ||
-                value.includes("iot") ||
-                value.includes("web") ||
-                value.includes("mobile")
-            ) {
-                document.querySelector("#projects")
-                    .scrollIntoView({ behavior: "smooth" });
-    
-            } else {
-    
-                alert("No matching section found");
-    
-            }
-    
+const searchInput = document.getElementById("portfolioSearch");
+
+searchInput.addEventListener("keypress", function(e) {
+
+    if (e.key === "Enter") {
+
+        const value = searchInput.value.toLowerCase().trim();
+
+        if (value.includes("about")) {
+
+            document.querySelector("#about")
+                .scrollIntoView({ behavior: "smooth" });
+
+        } else if (value.includes("skill")) {
+
+            document.querySelector("#skills")
+                .scrollIntoView({ behavior: "smooth" });
+
+        } else if (value.includes("education")) {
+
+            document.querySelector("#education")
+                .scrollIntoView({ behavior: "smooth" });
+
+        } else if (value.includes("experience")) {
+
+            document.querySelector("#experience")
+                .scrollIntoView({ behavior: "smooth" });
+
+        } else if (value.includes("achievement")) {
+
+            document.querySelector("#achievements")
+                .scrollIntoView({ behavior: "smooth" });
+
+        } else if (value.includes("project")) {
+
+            document.querySelector("#projects")
+                .scrollIntoView({ behavior: "smooth" });
+
+        } else if (value.includes("contact")) {
+
+            document.querySelector("#contact")
+                .scrollIntoView({ behavior: "smooth" });
+
+        } else if (
+            value.includes("embedded") ||
+            value.includes("iot") ||
+            value.includes("web") ||
+            value.includes("mobile")
+        ) {
+
+            document.querySelector("#projects")
+                .scrollIntoView({ behavior: "smooth" });
+
+        } else {
+
+            alert("No matching section found");
+
         }
-    
-    });
+    }
+});
     
     </script>
     <script>
