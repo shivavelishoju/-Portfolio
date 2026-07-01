@@ -3128,23 +3128,27 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                 <!-- ========================================= -->
 
                 <div class="project-card">
-                
+
                     <div class="project-image-container">
                         <img src="https://i.postimg.cc/qv6pHgjq/velino-ide.png"
-                            alt="VELINO IDE"
-                            class="project-image">
+                             alt="VELINO IDE"
+                             class="project-image">
                     </div>
-                    
-
+                
                     <div class="project-content">
-
+                
                         <h3 class="project-title">
                             VELINO IDE
                         </h3>
-
-                        <p class="project-desc">
+                
+                        <p class="project-desc short">
                             Developed a custom Arduino IDE using Electron.js with Monaco Editor, Arduino CLI integration, Serial Monitor, Serial Plotter, code compilation, sketch upload, project management, syntax highlighting, and a modern responsive UI to improve the embedded development workflow.
                         </p>
+                
+                        <button class="read-more-btn" onclick="toggleProject(this)">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
+                
                         <div class="tech-stack">
                             <span>Electron</span>
                             <span>Node.js</span>
@@ -3154,24 +3158,82 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                             <span>CSS</span>
                             <span>JavaScript</span>
                         </div>
-<!-- LIVE DEMO BUTTON -->
-<div class="mt-4">
-    <!-- add you project link -->
-    <a href="#"
-       target="_blank"
-       onclick="event.stopPropagation();"
-       class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-        <i class="fas fa-external-link-alt mr-2"></i>
-        Live Demo
-
-    </a>
-
-</div>
+                
+                        <div class="mt-4">
+                            <a href="#"
+                               target="_blank"
+                               onclick="event.stopPropagation();"
+                               class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
+                
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Live Demo
+                
+                            </a>
+                        </div>
+                
                     </div>
-
+                
                 </div>
 
+         <!-- ========================================= -->
+<!-- PROJECT 14 -->
+<!-- ========================================= -->
+
+<div class="project-card">
+
+    <!-- IMAGE -->
+    <div class="project-image-container">
+    
+        <img src="https://i.postimg.cc/xjRV0Jvn/IMG-2819-Original.jpg"
+            alt="VELINO IR + BLUETOOTH SMART HOME AUTOMATION"
+            class="project-image">
+    
+    </div>
+    
+    <!-- CONTENT -->
+    <div class="project-content">
+    
+        <div class="project-content">
+    
+            <h3 class="project-title">
+                DUM-E
+            </h3>
+        
+            <p class="project-desc short">
+                Designed a 6-axis robotic arm inspired by Iron Man’s DUM-E assistant, built using Arduino and servo motors. The system enables precise multi-axis movement for basic pick-and-place and automation tasks, demonstrating core robotics and embedded control concepts.
+            </p>
+        
+            <button class="read-more-btn" onclick="toggleProject(this)">
+                Read More <i class="fas fa-chevron-down"></i>
+            </button>
+    
+            <div class="tech-stack">
+                <span>6-Axis Robot</span>
+                <span>Arduino</span>
+                <span>Servo Motors</span>
+                <span>Embedded Systems</span>
+                <span>Robotics</span>
+                <span>Automation</span>
+            </div>
+        
+        </div>
+    <!-- LIVE DEMO BUTTON -->
+    <div class="mt-4">
+        <!-- add you project link -->
+        <a href="#"
+           target="_blank"
+           onclick="event.stopPropagation();"
+           class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
+    
+            <i class="fas fa-external-link-alt mr-2"></i>
+            Live Demo
+    
+        </a>
+    
+    </div>
+    </div>
+    
+    </div>       
  <!-- ========================================= -->
 <!-- PROJECT 2 -->
 <!-- ========================================= -->
@@ -3193,9 +3255,12 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
             VADDI Calculator Pro
         </h3>
 
-        <p class="project-desc">
+        <p class="project-desc short">
             Developed a comprehensive financial web application for calculating Simple Interest, Compound Interest, EMI, and loan repayments. Features an intuitive responsive interface, PDF report generation, offline PWA support, and multilingual functionality for accurate and efficient financial planning.
         </p>
+        <button class="read-more-btn" onclick="toggleProject(this)">
+            Read More <i class="fas fa-chevron-down"></i>
+        </button>
         <div class="tech-stack">
             <span>HTML</span>
             <span>CSS</span>
@@ -3241,9 +3306,13 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                             Master Slave Robotic Arm
                         </h3>
 
-                        <p class="project-desc">
+                        <p class="project-desc short">
                             Developed an Arduino-based robotic arm that replicates human hand movements using flex sensors and servo motors. The system enables real-time master-slave control, demonstrating applications in robotics, automation, remote manipulation, and human-machine interaction.
                         </p>
+
+                        <button class="read-more-btn" onclick="toggleProject(this)">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     
                         <div class="tech-stack">
                             <span>Arduino</span>
@@ -3289,10 +3358,13 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                             Velino Mecanum Robot
                         </h3>
                     
-                        <p class="project-desc">
+                        <p class="project-desc short">
                             Developed an ESP32-CAM-based omni-directional robot with live video streaming, Bluetooth and voice control, obstacle avoidance, and line-following capabilities. The robot uses mecanum wheels for smooth 360° movement, making it suitable for surveillance, autonomous navigation, and smart robotic applications.
                         </p>
-                    
+                        <button class="read-more-btn" onclick="toggleProject(this)">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
+
                         <div class="tech-stack">
                             <span>ESP32-CAM</span>
                             <span>Arduino</span>
@@ -3343,9 +3415,12 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
         Velino Food Delivery Robot
     </h3>
 
-    <p class="project-desc">
+    <p class="project-desc short">
         Developed an ESP32-based autonomous indoor food delivery robot featuring IR sensor-based line following, obstacle detection, and an LCD display for real-time status updates. Designed to deliver food efficiently in restaurants, hospitals, and smart indoor environments with reliable navigation and automation.
     </p>
+<button class="read-more-btn" onclick="toggleProject(this)">
+    Read More <i class="fas fa-chevron-down"></i>
+</button>
 
     <div class="tech-stack">
         <span>ESP32</span>
@@ -3393,10 +3468,13 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                             Velino AirPad
                         </h3>
 
-                        <p class="project-desc">
+                        <p class="project-desc short">
                             Developed an ESP32-based wireless air mouse and gaming controller using motion sensors and Bluetooth connectivity. The device translates hand movements into cursor control and gaming inputs, providing an intuitive, gesture-based user experience for gaming and PC interaction.
                         </p>
-                    
+                        <button class="read-more-btn" onclick="toggleProject(this)">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
+
                         <div class="tech-stack">
                             <span>ESP32</span>
                             <span>Bluetooth</span>
@@ -3442,9 +3520,13 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                         <h3 class="project-title">
                             Velino Board S1
                         </h3>
-<p class="project-desc">
+<p class="project-desc short">
     Designed a Smart embedded development board featuring built-in Wi-Fi, Bluetooth, automatic polarity detection, and optimized PCB design. The platform provides a reliable, user-friendly solution for IoT prototyping, embedded development, and rapid hardware testing.
 </p>
+
+<button class="read-more-btn" onclick="toggleProject(this)">
+    Read More <i class="fas fa-chevron-down"></i>
+</button>
 
 <div class="tech-stack">
     <span>ESP32</span>
@@ -3491,10 +3573,14 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                             Vaddi Calculator
                         </h3>
 
-                        <p class="project-desc">
+                        <p class="project-desc short">
                             Developed an Android-based financial calculator using MIT App Inventor for calculating Simple Interest, Compound Interest, EMI, and loan repayments. Designed with a user-friendly interface to provide quick, accurate, and efficient financial calculations.
                         </p>
                         
+                        <button class="read-more-btn" onclick="toggleProject(this)">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
+
                         <div class="tech-stack">
                             <span>MIT App Inventor</span>
                             <span>Android</span>
@@ -3540,10 +3626,14 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                                 Velino C3 AI Bot
                             </h3>
                         
-                            <p class="project-desc">
+                            <p class="project-desc short">
                                 Developed an ESP32-based AI desktop assistant inspired by Emo, featuring voice interaction, intelligent responses, Wi-Fi connectivity, and expressive behaviors. Designed to assist users with daily tasks while providing an interactive and engaging desktop companion experience.
                             </p>
                         
+                            <button class="read-more-btn" onclick="toggleProject(this)">
+                                Read More <i class="fas fa-chevron-down"></i>
+                            </button>
+
                             <div class="tech-stack">
                                 <span>ESP32</span>
                                 <span>AI Assistant</span>
@@ -3595,10 +3685,14 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                                 Zone Based ADAS
                             </h3>
                         
-                            <p class="project-desc">
+                            <p class="project-desc short">
                                 Developed an AI-powered Zone-Based Advanced Driver Assistance System (ADAS) using Python and OpenCV to enhance vehicle safety. The system detects vehicles, pedestrians, and road obstacles, providing real-time zone monitoring and collision warnings for safer driving.
                             </p>
                         
+                            <button class="read-more-btn" onclick="toggleProject(this)">
+                                Read More <i class="fas fa-chevron-down"></i>
+                            </button>
+
                             <div class="tech-stack">
                                 <span>Python</span>
                                 <span>OpenCV</span>
@@ -3648,10 +3742,14 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                                 Velino Map Navigator
                             </h3>
                         
-                            <p class="project-desc">
+                            <p class="project-desc short">
                                 Developed an ESP32-based smart GPS navigation system that provides real-time location tracking, route guidance, and destination navigation. Designed for portable and embedded applications with accurate positioning and efficient navigation.
                             </p>
                         
+                            <button class="read-more-btn" onclick="toggleProject(this)">
+                                Read More <i class="fas fa-chevron-down"></i>
+                            </button>
+
                             <div class="tech-stack">
                                 <span>ESP32</span>
                                 <span>GPS</span>
@@ -3701,10 +3799,14 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                 Velino Smart Medicine Reminder
             </h3>
         
-            <p class="project-desc">
+            <p class="project-desc short">
                 Developed an Arduino-based smart healthcare system that reminds users to take medicines at scheduled times using an RTC module and LCD display. The system improves medication adherence through timely alerts and reliable automation.
             </p>
         
+
+            <button class="read-more-btn" onclick="toggleProject(this)">
+                Read More <i class="fas fa-chevron-down"></i>
+            </button>
             <div class="tech-stack">
                 <span>Arduino</span>
                 <span>RTC Module</span>
@@ -3757,10 +3859,14 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
             Velino Bluetooth Home Automation
         </h3>
     
-        <p class="project-desc">
+        <p class="project-desc short">
             Developed a smart home automation system using Arduino Uno with dual control via IR remote and Bluetooth (HC-05). The system enables remote switching of home appliances through a mobile app built with MIT App Inventor, along with real-time environmental monitoring using a DHT11 sensor.
         </p>
     
+        <button class="read-more-btn" onclick="toggleProject(this)">
+            Read More <i class="fas fa-chevron-down"></i>
+        </button>
+
         <div class="tech-stack">
             <span>Arduino Uno</span>
             <span>HC-05 Bluetooth</span>
@@ -3792,61 +3898,7 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
 </div>
 
  
-<!-- ========================================= -->
-<!-- PROJECT 14 -->
-<!-- ========================================= -->
 
-<div class="project-card">
-
-<!-- IMAGE -->
-<div class="project-image-container">
-
-    <img src="https://i.postimg.cc/xjRV0Jvn/IMG-2819-Original.jpg"
-        alt="VELINO IR + BLUETOOTH SMART HOME AUTOMATION"
-        class="project-image">
-
-</div>
-
-<!-- CONTENT -->
-<div class="project-content">
-
-    <div class="project-content">
-
-        <h3 class="project-title">
-            DUM-E
-        </h3>
-    
-        <p class="project-desc">
-            Designed a 6-axis robotic arm inspired by Iron Man’s DUM-E assistant, built using Arduino and servo motors. The system enables precise multi-axis movement for basic pick-and-place and automation tasks, demonstrating core robotics and embedded control concepts.
-        </p>
-    
-        <div class="tech-stack">
-            <span>6-Axis Robot</span>
-            <span>Arduino</span>
-            <span>Servo Motors</span>
-            <span>Embedded Systems</span>
-            <span>Robotics</span>
-            <span>Automation</span>
-        </div>
-    
-    </div>
-<!-- LIVE DEMO BUTTON -->
-<div class="mt-4">
-    <!-- add you project link -->
-    <a href="#"
-       target="_blank"
-       onclick="event.stopPropagation();"
-       class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-        <i class="fas fa-external-link-alt mr-2"></i>
-        Live Demo
-
-    </a>
-
-</div>
-</div>
-
-</div>
 <!-- ========================================= -->
 <!-- PROJECT 15 -->
 <!-- ========================================= -->
@@ -3871,10 +3923,14 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                 Velino TypeX
             </h3>
         
-            <p class="project-desc">
+            <p class="project-desc short">
                 Developed a professional typing speed trainer web application with real-time WPM tracking, accuracy analysis, timer-based challenges, theme customization, and performance statistics to improve typing efficiency and productivity.
             </p>
         
+            <button class="read-more-btn" onclick="toggleProject(this)">
+                Read More <i class="fas fa-chevron-down"></i>
+            </button>
+
             <div class="tech-stack">
                 <span>HTML</span>
                 <span>CSS</span>
@@ -3959,10 +4015,14 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
                                 Bionic Hand
                             </h3>
                         
-                            <p class="project-desc">
+                            <p class="project-desc short" >
                                 Developed an EMG-based bionic prosthetic hand that translates muscle signals into mechanical finger movements using Arduino and servo motors. The system demonstrates real-time human–machine interaction for assistive biomedical applications.
                             </p>
                         
+                            <button class="read-more-btn" onclick="toggleProject(this)">
+                                Read More <i class="fas fa-chevron-down"></i>
+                            </button>
+                            
                             <div class="tech-stack">
                                 <span>EMG Sensors</span>
                                 <span>Arduino</span>
@@ -4001,13 +4061,67 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
 
 </section>
 
+<script>function toggleProject(btn){
 
+    const desc = btn.previousElementSibling;
+
+    desc.classList.toggle("show");
+    desc.classList.toggle("short");
+
+    btn.classList.toggle("active");
+
+    if(desc.classList.contains("show")){
+        btn.innerHTML='Show Less <i class="fas fa-chevron-up"></i>';
+    }else{
+        btn.innerHTML='Read More <i class="fas fa-chevron-down"></i>';
+    }
+
+}</script>
 
 <!-- ========================================= -->
 <!-- CSS -->
 <!-- ========================================= -->
 
 <style>
+    /* ---------- Project Dropdown ---------- */
+
+.project-desc{
+    overflow:hidden;
+    transition:max-height .45s ease;
+}
+
+.project-desc.short{
+    max-height:70px;
+}
+
+.project-desc.show{
+    max-height:500px;
+}
+
+.read-more-btn{
+    margin-top:12px;
+    background:none;
+    border:none;
+    color:#3b82f6;
+    cursor:pointer;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    transition:.3s;
+}
+
+.read-more-btn:hover{
+    color:#60a5fa;
+}
+
+.read-more-btn i{
+    transition:.3s;
+}
+
+.read-more-btn.active i{
+    transform:rotate(180deg);
+}
     /* PROJECT CARD */
 .project-card{
     position:relative;
