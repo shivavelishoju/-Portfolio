@@ -1,3 +1,4 @@
+/* portfolio M2 */
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -588,16 +589,12 @@
 </div>
 
 <!-- SPLASH SOUND -->
-<!-- <audio id="splashSound" preload="auto">
-    <source src="splash-sound.mp3" type="audio/mpeg">
-</audio> -->
+<link rel="preload" href="splash-sound.mp3" as="audio" type="audio/mpeg">
 
-<!-- SPLASH SOUND -->
-<audio
-    id="splashSound"
-    preload="auto"
-    playsinline
-    webkit-playsinline>
+<audio id="splashSound"
+       preload="auto"
+       playsinline
+       webkit-playsinline>
     <source src="splash-sound.mp3" type="audio/mpeg">
 </audio>
 <style>
@@ -646,85 +643,68 @@
 
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-
+/*
+ * FAST SPLASH AUDIO
+ * - Starts as early as the browser allows.
+ * - Uses a user gesture fallback for iPhone/Android autoplay restrictions.
+ * - Does not call sound.load(), which can introduce an unnecessary wait.
+ */
+(() => {
     const splash = document.getElementById("splash-screen");
     const sound = document.getElementById("splashSound");
 
-    let soundStarted = false;
+    if (!splash || !sound) return;
 
-    // Prepare audio immediately
-    sound.load();
+    let started = false;
 
-    function startSplashSound() {
-
-        if (soundStarted) return;
-
-        soundStarted = true;
+    const startSound = () => {
+        if (started) return;
 
         sound.currentTime = 0;
 
-        const promise = sound.play();
+        const p = sound.play();
 
-        if (promise) {
-            promise.catch(() => {
-                soundStarted = false;
+        if (p && typeof p.then === "function") {
+            p.then(() => {
+                started = true;
+            }).catch(() => {
+                // Autoplay blocked. The first user gesture will retry.
             });
+        } else {
+            started = true;
         }
-    }
-
-    /*
-     * Try immediately.
-     * Works automatically on browsers that allow autoplay.
-     */
-    startSplashSound();
-
-
-    /*
-     * Mobile fallback.
-     * The first touch starts the sound immediately.
-     */
-    const unlockAudio = () => {
-        startSplashSound();
-
-        document.removeEventListener("touchstart", unlockAudio);
-        document.removeEventListener("pointerdown", unlockAudio);
     };
 
-    document.addEventListener("touchstart", unlockAudio, {
-        passive: true,
-        once: true
-    });
+    // Try immediately.
+    startSound();
 
-    document.addEventListener("pointerdown", unlockAudio, {
-        passive: true,
-        once: true
-    });
+    // iPhone/Android fallback: play during the first real user gesture.
+    const unlock = () => {
+        startSound();
 
+        window.removeEventListener("touchstart", unlock);
+        window.removeEventListener("pointerdown", unlock);
+        window.removeEventListener("click", unlock);
+    };
 
-    /*
-     * Splash duration
-     */
+    window.addEventListener("touchstart", unlock, { once: true, passive: true });
+    window.addEventListener("pointerdown", unlock, { once: true, passive: true });
+    window.addEventListener("click", unlock, { once: true, passive: true });
+
+    // Keep your existing 2.5 second splash timing.
     setTimeout(() => {
-
         splash.style.opacity = "0";
 
         setTimeout(() => {
-
-            if (sound) {
-                sound.pause();
-                sound.currentTime = 0;
-            }
+            sound.pause();
+            sound.currentTime = 0;
 
             splash.remove();
-
             document.body.style.overflow = "auto";
-
         }, 300);
 
     }, 2500);
-
-});
+})();
 </script>
     
     <!-- Hero Section -->
