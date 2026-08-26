@@ -588,7 +588,16 @@
 </div>
 
 <!-- SPLASH SOUND -->
-<audio id="splashSound" preload="auto">
+<!-- <audio id="splashSound" preload="auto">
+    <source src="splash-sound.mp3" type="audio/mpeg">
+</audio> -->
+
+<!-- SPLASH SOUND -->
+<audio
+    id="splashSound"
+    preload="auto"
+    playsinline
+    webkit-playsinline>
     <source src="splash-sound.mp3" type="audio/mpeg">
 </audio>
 <style>
@@ -634,70 +643,89 @@
         transform:rotateY(0deg);
     }
 }</style>
+
+
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    
-        const splash = document.getElementById("splash-screen");
-        const splashSound = document.getElementById("splashSound");
-    
-        // Try to play sound automatically
-        function playSplashSound() {
-            if (!splashSound) return;
-    
-            splashSound.currentTime = 0;
-    
-            const playPromise = splashSound.play();
-    
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                    // Mobile browsers may block autoplay.
-                    // Sound will start after the first user interaction.
-                });
-            }
+document.addEventListener("DOMContentLoaded", () => {
+
+    const splash = document.getElementById("splash-screen");
+    const sound = document.getElementById("splashSound");
+
+    let soundStarted = false;
+
+    // Prepare audio immediately
+    sound.load();
+
+    function startSplashSound() {
+
+        if (soundStarted) return;
+
+        soundStarted = true;
+
+        sound.currentTime = 0;
+
+        const promise = sound.play();
+
+        if (promise) {
+            promise.catch(() => {
+                soundStarted = false;
+            });
         }
-    
-        // First attempt
-        playSplashSound();
-    
-        // Mobile fallback:
-        // Start sound on the first tap/click/interaction
-        const startSoundOnInteraction = () => {
-    
-            if (splashSound.paused) {
-                splashSound.currentTime = 0;
-                splashSound.play().catch(() => {});
-            }
-    
-            document.removeEventListener("click", startSoundOnInteraction);
-            document.removeEventListener("touchstart", startSoundOnInteraction);
-            document.removeEventListener("keydown", startSoundOnInteraction);
-        };
-    
-        document.addEventListener("click", startSoundOnInteraction, { once: true });
-        document.addEventListener("touchstart", startSoundOnInteraction, { once: true });
-        document.addEventListener("keydown", startSoundOnInteraction, { once: true });
-    
-    
-        // Remove splash after 2.5 seconds
-        setTimeout(() => {
-    
-            splash.style.opacity = "0";
-    
-            // Stop sound when splash disappears
-            if (splashSound) {
-                splashSound.pause();
-                splashSound.currentTime = 0;
-            }
-    
-            setTimeout(() => {
-                splash.remove();
-                document.body.style.overflow = "auto";
-            }, 300);
-    
-        }, 2500);
-    
+    }
+
+    /*
+     * Try immediately.
+     * Works automatically on browsers that allow autoplay.
+     */
+    startSplashSound();
+
+
+    /*
+     * Mobile fallback.
+     * The first touch starts the sound immediately.
+     */
+    const unlockAudio = () => {
+        startSplashSound();
+
+        document.removeEventListener("touchstart", unlockAudio);
+        document.removeEventListener("pointerdown", unlockAudio);
+    };
+
+    document.addEventListener("touchstart", unlockAudio, {
+        passive: true,
+        once: true
     });
-    </script>
+
+    document.addEventListener("pointerdown", unlockAudio, {
+        passive: true,
+        once: true
+    });
+
+
+    /*
+     * Splash duration
+     */
+    setTimeout(() => {
+
+        splash.style.opacity = "0";
+
+        setTimeout(() => {
+
+            if (sound) {
+                sound.pause();
+                sound.currentTime = 0;
+            }
+
+            splash.remove();
+
+            document.body.style.overflow = "auto";
+
+        }, 300);
+
+    }, 2500);
+
+});
+</script>
     
     <!-- Hero Section -->
 <!-- Background Slider -->
