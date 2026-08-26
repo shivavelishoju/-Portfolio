@@ -401,15 +401,15 @@
 /* TOP & BOTTOM LINES */
 .splash-line{
 
-    width:800px;
-    height:1px;
+    width:1000px;
+    height:2px;
 
     margin:20px 0;
 
     background:linear-gradient(
         90deg,
         transparent,
-        rgba(12, 110, 180, 0.8),
+        rgba(222, 225, 228, 0.986),
         transparent
     );
 
@@ -419,9 +419,9 @@
 /* TITLE */
 .apple-logo-text{
 
-    font-size:3rem;
+    font-size:9rem;
     font-weight:100;
-    letter-spacing:9px;
+    letter-spacing:12px;
 
     color:white;
 
@@ -435,9 +435,9 @@
 
     color:rgba(255, 255, 255, 0.7);
 
-    letter-spacing:3px;
+    letter-spacing:8px;
 
-    font-size:18px;
+    font-size:22px;
 }
 
 /* ANIMATION
@@ -562,7 +562,8 @@
     
  
    <!-- SPLASH SCREEN --> 
-   <div id="splash-screen">
+<!-- SPLASH SCREEN -->
+<div id="splash-screen">
 
     <div class="splash-line"></div>
 
@@ -585,6 +586,11 @@
     </div>
 
 </div>
+
+<!-- SPLASH SOUND -->
+<audio id="splashSound" preload="auto">
+    <source src="splash-sound.mp3" type="audio/mpeg">
+</audio>
 <style>
 .apple-logo-text{
     display:flex;
@@ -629,22 +635,68 @@
     }
 }</style>
 <script>
-   document.addEventListener("DOMContentLoaded", () => {
-
-const splash = document.getElementById("splash-screen");
-
-setTimeout(() => {
-
-    splash.style.opacity = "0";
-
-    setTimeout(() => {
-        splash.remove();
-        document.body.style.overflow = "auto";
-    }, 300);
-
-}, 2500);
-
-});
+    document.addEventListener("DOMContentLoaded", () => {
+    
+        const splash = document.getElementById("splash-screen");
+        const splashSound = document.getElementById("splashSound");
+    
+        // Try to play sound automatically
+        function playSplashSound() {
+            if (!splashSound) return;
+    
+            splashSound.currentTime = 0;
+    
+            const playPromise = splashSound.play();
+    
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Mobile browsers may block autoplay.
+                    // Sound will start after the first user interaction.
+                });
+            }
+        }
+    
+        // First attempt
+        playSplashSound();
+    
+        // Mobile fallback:
+        // Start sound on the first tap/click/interaction
+        const startSoundOnInteraction = () => {
+    
+            if (splashSound.paused) {
+                splashSound.currentTime = 0;
+                splashSound.play().catch(() => {});
+            }
+    
+            document.removeEventListener("click", startSoundOnInteraction);
+            document.removeEventListener("touchstart", startSoundOnInteraction);
+            document.removeEventListener("keydown", startSoundOnInteraction);
+        };
+    
+        document.addEventListener("click", startSoundOnInteraction, { once: true });
+        document.addEventListener("touchstart", startSoundOnInteraction, { once: true });
+        document.addEventListener("keydown", startSoundOnInteraction, { once: true });
+    
+    
+        // Remove splash after 2.5 seconds
+        setTimeout(() => {
+    
+            splash.style.opacity = "0";
+    
+            // Stop sound when splash disappears
+            if (splashSound) {
+                splashSound.pause();
+                splashSound.currentTime = 0;
+            }
+    
+            setTimeout(() => {
+                splash.remove();
+                document.body.style.overflow = "auto";
+            }, 300);
+    
+        }, 2500);
+    
+    });
     </script>
     
     <!-- Hero Section -->
@@ -754,6 +806,7 @@ setTimeout(() => {
     transform:translateY(0);
 }
 </style>
+
 <script>
     const roles = [
         // "Open to Java Developer Opportunities",
@@ -5021,7 +5074,7 @@ display:block;
                 <div class="text-center lg:text-left">
 
                     <h4 class="text-lg font-semibold text-white mb-1">
-                        Shiva Velishoju
+                        Developed By Shiva Velishoju
                     </h4>
 
                     <p class="text-slate-500 text-sm">
@@ -5031,15 +5084,14 @@ display:block;
                 </div>
 
                 <!-- CENTER TEXT -->
-                <div class="text-center text-slate-400 text-sm max-w-xl">
+                <!-- <div class="text-center text-slate-400 text-sm max-w-xl">
 
-                    Building the future through Embedded Systems,
-                    IoT, Robotics, Automation & Software Development.
+                    Building the future through Embedded Systems,IoT, Robotics, Automation & Software Development.
 
-                </div>
+                </div> -->
 
                 <!-- QUICK NAV -->
-                <div class="flex items-center gap-6 text-sm">
+                <!-- <div class="flex items-center gap-6 text-sm">
 
                     <a href="#home"
                        class="text-slate-500 hover:text-primary transition duration-300">
@@ -5056,7 +5108,7 @@ display:block;
                         Contact
                     </a>
 
-                </div>
+                </div> -->
 
             </div>
 
