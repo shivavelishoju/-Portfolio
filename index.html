@@ -247,55 +247,89 @@
         }
 
         
-        .hero-image-wrap {
-    position: relative;
-    width: 520px;
-    height: 700px;
-}
+        /* =========================================
+           HERO IMAGE — FLUSH TO RIGHT EDGE
+           ========================================= */
+        .hero-edge-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 58vw;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: stretch;
+        }
 
-.hero-image-wrap {
-    position: relative;
-    width: 750px;
-    height: 810px;
-}
+        .hero-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
 
-/* PURE IMAGE ONLY */
-.hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+            /* Fade the left side into the hero background.
+               The right side remains fully visible and reaches
+               the exact edge of the browser viewport. */
+            -webkit-mask-image: linear-gradient(
+                to right,
+                rgba(0,0,0,0) 0%,
+                rgba(0,0,0,0.12) 10%,
+                rgba(0,0,0,0.45) 25%,
+                rgba(0,0,0,0.82) 43%,
+                rgba(0,0,0,1) 62%
+            );
 
-   
-  
+            mask-image: linear-gradient(
+                to right,
+                rgba(0,0,0,0) 0%,
+                rgba(0,0,0,0.12) 10%,
+                rgba(0,0,0,0.45) 25%,
+                rgba(0,0,0,0.82) 43%,
+                rgba(0,0,0,1) 62%
+            );
 
-    /* LEFT SIDE FADE ONLY */
-    -webkit-mask-image: linear-gradient(
-        to right,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.2)   15%,
-        rgba(0,0,0,0.6) 30%,
-        rgba(0,0,0,1) 90%
-    );
+            filter: contrast(1.00) saturate(1.1);
+        }
 
-    mask-image: linear-gradient(
-        to right,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.2) 15%,
-        rgba(0,0,0,0.6) 50%,
-        rgba(0,0,0,1) 90%
-    );
+        /* Keep the hero section as the positioning reference. */
+        #home {
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* subtle premium look */
-    filter: contrast(1.00) saturate(1.1);
-}
+        /* Keep the hero text above the image. */
+        #home > .container {
+            position: relative;
+            z-index: 2;
+        }
 
-/* RESPONSIVE */
-@media (max-width: 868px) {
-    .hero-image-wrap {
-        width: 420px;
-        height: 320px;
-    }
-}
+        /* TABLET */
+        @media (max-width: 1024px) {
+            .hero-edge-image {
+                width: 55vw;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .hero-edge-image {
+                position: relative;
+                top: auto;
+                right: auto;
+                width: 100%;
+                height: 450px;
+                margin-top: 30px;
+            }
+
+            .hero-image {
+                object-position: center;
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
+        }
 
 .search-container {
     position: relative;
@@ -677,7 +711,7 @@ setTimeout(() => {
 
 <div class="overlay"></div>
 <section id="home" class="min-h-screen flex items-center pt-20">
-    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-4">
 
         <!-- Left Content -->
         <div class="md:w-1/2 mb-12 md:mb-0">
@@ -800,15 +834,15 @@ setTimeout(() => {
                 <div class="flex flex-col sm:flex-row gap-4 mt-8">
             </div> 
         </div>
-        <!-- Right Image -->
-        <!-- <div class="md:w-2/2 flex justify-center items-center "> -->
-           <div class="hero-image-wrap right-4 ">
-                <div class="hero-image-wrap  bottom-2">        
-                <img src="2355B9A5-3A03-40E1-80C7-C3D56E61FD10.PNG"
-                     alt="Shiva Velishoju"
-                     class="hero-image">       
-            </div>       
-        </div>
+    </div>
+
+    <!-- RIGHT EDGE IMAGE — OUTSIDE THE CENTERED CONTAINER -->
+    <div class="hero-edge-image">
+        <img
+            src="2355B9A5-3A03-40E1-80C7-C3D56E61FD10.PNG"
+            alt="Shiva Velishoju"
+            class="hero-image"
+        >
     </div>
 </section>  
    <!-- SECTION DIVIDER -->
