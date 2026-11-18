@@ -1262,8 +1262,8 @@ setTimeout(() => {
    <!-- Current Technology -->
    <p class="text-slate-400 mb-6 leading-relaxed">
     My current technology stack includes
-    <strong>Java, C, Embedded C, Python, JavaScript, HTML, CSS,
-    SQL, Node.js, and Electron.js</strong>. I also work with
+    <strong>Java, C, Embedded C, JavaScript, HTML, CSS,
+    Node.js, and Electron.js</strong>. I also work with
     <strong>Arduino, ESP32, Arduino IDE/CLI, Ollama, and local
     AI models</strong>, along with tools such as
     <strong>EasyEDA and Tinkercad</strong> for electronics and
@@ -2353,10 +2353,8 @@ cards.forEach(card => {
 <!-- ========================================= -->
 <!-- ACHIEVEMENTS & CERTIFICATIONS -->
 <!-- ========================================= -->
-
-<section id="achievements" class="py-20 bg-transpart overflow-hidden">
-
-    <div class="container mx-auto px-6">
+<section id="achievements" class="achievements-section">
+    <div class="achievements-container">
 
         <!-- TITLE -->
         <div class="text-center mb-16">
@@ -3695,9 +3693,8 @@ function closeSkill(){
 </style>
 <!-- Tools & Technologies -->
 <!-- Tools & Technologies Section -->
-<section id="skills" class="py-20 bg-transpart overflow-hidden">
-
-    <div id="Tools" class="mt-10 px-4 md:px-8">
+<section id="skills" class="skills-full-width">
+    <div id="Tools" class="skills-container">
 
         <!-- Section Title -->
         <div class="text-center mb-12">
@@ -3796,7 +3793,7 @@ function closeSkill(){
 
 
                 <!-- ================= PYTHON ================= -->
-                <div
+                <!-- <div
                     onclick="showTech(
                         'Python',
                         'Used for local AI applications, automation, scripting, experimentation, and development tools.'
@@ -3814,11 +3811,11 @@ function closeSkill(){
                         Python
                     </span>
 
-                </div>
+                </div> -->
 
 
                 <!-- ================= JAVASCRIPT ================= -->
-                <div
+                <!-- <div
                     onclick="showTech(
                         'JavaScript',
                         'Used for interactive websites, application interfaces, automation, and desktop application development.'
@@ -3836,11 +3833,11 @@ function closeSkill(){
                         JavaScript
                     </span>
 
-                </div>
+                </div> -->
 
 
                 <!-- ================= NODE ================= -->
-                <div
+                <!-- <div
                     onclick="showTech(
                         'Node.js',
                         'Used for JavaScript runtime development, backend functionality, automation, and application tooling.'
@@ -3858,7 +3855,7 @@ function closeSkill(){
                         Node.js
                     </span>
 
-                </div>
+                </div> -->
 
 
                 <!-- ================= ELECTRON ================= -->
@@ -3928,7 +3925,7 @@ function closeSkill(){
 
 
                 <!-- ================= SQL ================= -->
-                <div
+                <!-- <div
                     onclick="showTech(
                         'SQL / MySQL',
                         'Used for database management, SQL queries, joins, data organization, and application data storage.'
@@ -3946,7 +3943,7 @@ function closeSkill(){
                         SQL / MySQL
                     </span>
 
-                </div>
+                </div> -->
 
 
                 <!-- ================= ARDUINO ================= -->
@@ -4389,13 +4386,13 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
         }
         
         </script>
-        <!-- SECTION DIVIDER -->
- <div class="flex items-center justify-center my-2 bg-darker">
+   <!-- SECTION DIVIDER -->
+   <div class="flex items-center justify-center my-2 bg-darker">
 
     <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
 
     <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
-        velino
+        portfolio
     </span>
 
     <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
@@ -4405,1057 +4402,1210 @@ class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
 <!-- PROJECTS SECTION -->
 <!-- ========================================= -->
 
-<section id="projects" class="py-5 bg-darker overflow-hidden">
 
-    <div class="container mx-auto px-6">
+<!-- ============================================
+     MODERN PROJECT SHOWCASE
+     ALTERNATING IMAGE LAYOUT
+============================================= -->
 
-        <!-- HEADING -->
-        <div class="text-center mb-16">
-          
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                My <span class="gradient-text">Projects</span>
-            </h2>
-          
-            
+<section id="projects" class="modern-projects">
 
-            <p class="text-slate-400 max-w-1xl mx-auto">
-                Innovative embedded systems, IoT devices, robotics, automation,
-                and software applications developed under the VELINO ecosystem.
-            </p>
-
-            <!-- <div
-                class="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mt-5 rounded-full">
-            </div> -->
-
-        </div>
-
-        <!-- ========================================= -->
-        <!-- PROJECT SLIDER -->
-        <!-- ========================================= -->
-
-        <div class="relative ">
-            
-            <!-- SLIDER -->
-            <div id="projectSlider"
-                class="flex gap-8 overflow-x-auto scroll-smoothpx-3 py-5">
-
-                <!-- ========================================= -->
-                <!-- PROJECT 1 -->
-                <!-- ========================================= -->
-
-                <div class="project-card">
-
-                    <div class="project-image-container">
-                        <img src="https://i.postimg.cc/qv6pHgjq/velino-ide.png"
-                             alt="VELINO IDE"
-                             class="project-image">
-                    </div>
-                
-                    <div class="project-content">
-                
-                        <h3 class="project-title">
-                            VELINO IDE
-                        </h3>
-                
-                        <p class="project-desc short">
-                            Developed a custom Arduino IDE using Electron.js with Monaco Editor, Arduino CLI integration, Serial Monitor, Serial Plotter, code compilation, sketch upload, project management, syntax highlighting, and a modern responsive UI to improve the embedded development workflow.
-                        </p>
-                
-                        <button class="read-more-btn" onclick="toggleProject(this)">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                
-                        <div class="tech-stack">
-                            <span>Electron</span>
-                            <span>Node.js</span>
-                            <span>Arduino CLI</span>
-                            <span>Monaco Editor</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                
-                        <div class="mt-4">
-                            <a href="https://velino-ide-lruk.vercel.app/"
-                               target="_blank"
-                               onclick="event.stopPropagation();"
-                               class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-                
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                Live Demo
-                
-                            </a>
-                        </div>
-                
-                    </div>
-                
-                </div>
-<!-- ========================================= -->
-
-<!-- PROJECT 10 — VELINO SMART AI -->
-
-<!-- ========================================= -->
-
-<div class="project-card">
-
-    <div class="project-image-container">
-    
-        <img
-            src="Velino smart ai icon.png"
-            alt="Velino Smart AI - Local AI Assistant"
-            class="project-image"
-        >
-    
-    </div>
-    
-    
-    <div class="project-content">
-    
-        <h3 class="project-title">
-            Velino Smart AI
-        </h3>
-    
-    
-        <p class="project-desc short">
-            Developed Velino Smart AI, a local AI-powered assistant integrated
-            into the Velino IDE for embedded development. It runs with local
-            open-source AI models to provide coding assistance, Arduino logic
-            guidance, context-aware suggestions and debugging support without
-            depending on paid cloud AI APIs.
-        </p>
-    
-    
-        <button
-            class="read-more-btn"
-            onclick="toggleProject(this)"
-        >
-            Read More
-            <i class="fas fa-chevron-down"></i>
-        </button>
-    
-    
-        <div class="tech-stack">
-    
-            <span>Local AI</span>
-            <span>Open-Source LLM</span>
-            <span>Ollama</span>
-            <span>JavaScript</span>
-            <span>Node.js</span>
-            <span>Electron.js</span>
-            <span>Arduino</span>
-            <span>Embedded Systems</span>
-    
-        </div>
-    
-    
-        <!-- LIVE DEMO BUTTON -->
-    
-        <div class="mt-4">
-    
-            <a
-                href="https://velino-smart-ai.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onclick="event.stopPropagation();"
-                class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300"
-            >
-    
-                <i class="fas fa-external-link-alt mr-2"></i>
-                Live Demo
-    
-            </a>
-    
-        </div>
-    
+    <!-- SECTION INTRO -->
+    <div class="projects-heading">
+        <span class="projects-eyebrow">PORTFOLIO / SELECTED WORK</span>
+        <h2>Things I've <span>Built.</span></h2>
+        <p>Ideas transformed into real-world engineering experiences.</p>
     </div>
 
-    
-    </div>
-                 
-         <!-- ========================================= -->
-<!-- PROJECT 14 -->
-<!-- ========================================= -->
 
-<div class="project-card">
+    <!-- =========================================
+         PROJECT 01 — VELINO IDE
+         TEXT LEFT | IMAGE RIGHT
+    ========================================== -->
 
-    <!-- IMAGE -->
-    <div class="project-image-container">
-    
-        <img src="https://i.postimg.cc/xjRV0Jvn/IMG-2819-Original.jpg"
-            alt="VELINO IR + BLUETOOTH SMART HOME AUTOMATION"
-            class="project-image">
-    
-    </div>
-    
-    <!-- CONTENT -->
-    <div class="project-content">
-    
-        <div class="project-content">
-    
-            <h3 class="project-title">
-                DUM-E
-            </h3>
-        
-            <p class="project-desc short">
-                Designed a 6-axis robotic arm inspired by Iron Man’s DUM-E assistant, built using Arduino and servo motors. The system enables precise multi-axis movement for basic pick-and-place and automation tasks, demonstrating core robotics and embedded control concepts.
-            </p>
-        
-            <button class="read-more-btn" onclick="toggleProject(this)">
-                Read More <i class="fas fa-chevron-down"></i>
-            </button>
-    
-            <div class="tech-stack">
-                <span>6-Axis Robot</span>
-                <span>Arduino</span>
-                <span>Servo Motors</span>
-                <span>Embedded Systems</span>
-                <span>Robotics</span>
-                <span>Automation</span>
-            </div>
-        
-        </div>
-    <!-- LIVE DEMO BUTTON -->
-    <div class="mt-4">
-        <!-- add you project link -->
-        <a href="#"
-           target="_blank"
-           onclick="event.stopPropagation();"
-           class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-    
-            <i class="fas fa-external-link-alt mr-2"></i>
-            Live Demo
-    
-        </a>
-    
-    </div>
-    </div>
-    
-    </div>       
- <!-- ========================================= -->
-<!-- PROJECT 2 -->
-<!-- ========================================= -->
-<div class="project-card">
+    <article class="modern-project" data-project="01">
+        <div class="project-inner">
 
-    <!-- IMAGE -->
-    <div class="project-image-container">
+            <div class="modern-project-content">
 
-        <img src="VADDI APP.png"
-             alt="VADDI Calculator Pro"
-             class="project-image">
-
-    </div>
-
-    <!-- CONTENT -->
-    <div class="project-content">
-
-        <h3 class="project-title">
-            VADDI Calculator Pro
-        </h3>
-
-        <p class="project-desc short">
-            Developed a comprehensive financial web application for calculating Simple Interest, Compound Interest, EMI, and loan repayments. Features an intuitive responsive interface, PDF report generation, offline PWA support, and multilingual functionality for accurate and efficient financial planning.
-        </p>
-        <button class="read-more-btn" onclick="toggleProject(this)">
-            Read More <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="tech-stack">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-            <span>PWA</span>
-            <span>Financial Tools</span>
-            <span>Responsive UI</span>
-        </div>
-        <!-- LIVE DEMO BUTTON -->
-        <div class="mt-4">
-
-            <a href="https://vaddi-calculator-pro.vercel.app/"
-               target="_blank"
-               onclick="event.stopPropagation();"
-               class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-                <i class="fas fa-external-link-alt mr-2"></i>
-                Live Demo
-
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-    
-                <!-- ========================================= -->
-                <!-- PROJECT 3 -->
-                <!-- ========================================= -->
-
-                <div class="project-card">
-
-                    <div class="project-image-container">
-                        <img src="MSRA.png"
-                            alt="Robotic Hand"
-                            class="project-image">
-                    </div>
-
-                    <div class="project-content">
-
-                        <h3 class="project-title">
-                            Master Slave Robotic Arm
-                        </h3>
-
-                        <p class="project-desc short">
-                            Developed an Arduino-based robotic arm that replicates human hand movements using flex sensors and servo motors. The system enables real-time master-slave control, demonstrating applications in robotics, automation, remote manipulation, and human-machine interaction.
-                        </p>
-
-                        <button class="read-more-btn" onclick="toggleProject(this)">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    
-                        <div class="tech-stack">
-                            <span>Arduino</span>
-                            <span>Servo Motors</span>
-                            <span>Flex Sensors</span>
-                            <span>Embedded C</span>
-                            <span>Robotics</span>
-                            <span>Automation</span>
-                        </div>
-<!-- LIVE DEMO BUTTON -->
-<div class="mt-4">
-    <!-- add you project link -->
-    <a href="#"
-       target="_blank"
-       onclick="event.stopPropagation();"
-       class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-        <i class="fas fa-external-link-alt mr-2"></i>
-        Live Demo
-
-    </a>
-
-</div>
-                    </div>
-
+                <div class="project-meta">
+                    <span class="project-index">01</span>
+                    <span class="project-category">SOFTWARE DEVELOPMENT</span>
                 </div>
 
-                <!-- ========================================= -->
-                <!-- PROJECT 4 -->
-                <!-- ========================================= -->
+                <h3>VELINO <span>IDE</span></h3>
 
-                <div class="project-card">
+                <p class="modern-project-description">
+                    A next-generation embedded development environment
+                    built to simplify Arduino development. Features
+                    automatic board and port detection, code compilation,
+                    sketch uploading, Serial Monitor, Serial Plotter
+                    and integrated development tools.
+                </p>
 
-                    <div class="project-image-container">
-                        <img src="https://i.postimg.cc/CKR9kVcp/1185c476-1e28-4e75-b7c7-dbd6b84b6fdd.png"
-                            alt="Mecanum Robot"
-                            class="project-image">
-                    </div>
-
-                    <div class="project-content">
-
-                        <h3 class="project-title">
-                            Velino Mecanum Robot
-                        </h3>
-                    
-                        <p class="project-desc short">
-                            Developed an ESP32-CAM-based omni-directional robot with live video streaming, Bluetooth and voice control, obstacle avoidance, and line-following capabilities. The robot uses mecanum wheels for smooth 360° movement, making it suitable for surveillance, autonomous navigation, and smart robotic applications.
-                        </p>
-                        <button class="read-more-btn" onclick="toggleProject(this)">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-
-                        <div class="tech-stack">
-                            <span>ESP32-CAM</span>
-                            <span>Arduino</span>
-                            <span>Mecanum Wheels</span>
-                            <span>Bluetooth</span>
-                            <span>Voice Control</span>
-                            <span>OpenCV</span>
-                            <span>Motor Driver</span>
-                            <span>Robotics</span>
-                        </div>
-                    
-<!-- LIVE DEMO BUTTON -->
-<div class="mt-4">
-    <!-- add you project link -->
-    <a href="#"
-       target="_blank"
-       onclick="event.stopPropagation();"
-       class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-        <i class="fas fa-external-link-alt mr-2"></i>
-        Live Demo
-
-    </a>
-
-</div>
-                    </div>
-
+                <div class="project-tech">
+                    <span>Electron.js</span>
+                    <span>Node.js</span>
+                    <span>Arduino CLI</span>
+                    <span>Monaco Editor</span>
+                    <span>JavaScript</span>
+                    <span>HTML / CSS</span>
                 </div>
 
-                <!-- ========================================= -->
-                <!-- PROJECT 5 -->
-                <!-- ========================================= -->
+                <div class="project-actions">
+                    <a href="https://velino-ide-lruk.vercel.app/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="project-visit">
+                        Explore Project
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
 
-<div class="project-card">
-
-<!-- IMAGE CONTAINER -->
-<div class="project-image-container food-robot-image">
-
-    <img src="https://i.postimg.cc/dVjVpGF4/Screenshot-2026-05-24-at-3-25-03-PM.png"
-        alt="Food Robot"
-        class="project-image food-img">
-
-</div>
-
-<div class="project-content">
-
-    <h3 class="project-title">
-        Velino Food Delivery Robot
-    </h3>
-
-    <p class="project-desc short">
-        Developed an ESP32-based autonomous indoor food delivery robot featuring IR sensor-based line following, obstacle detection, and an LCD display for real-time status updates. Designed to deliver food efficiently in restaurants, hospitals, and smart indoor environments with reliable navigation and automation.
-    </p>
-<button class="read-more-btn" onclick="toggleProject(this)">
-    Read More <i class="fas fa-chevron-down"></i>
-</button>
-
-    <div class="tech-stack">
-        <span>ESP32</span>
-        <span>IR Sensors</span>
-        <span>LCD Display</span>
-        <span>Motor Driver</span>
-        <span>DC Motors</span>
-        <span>Embedded C</span>
-        <span>Automation</span>
-        <span>Robotics</span>
-    </div>
-<!-- LIVE DEMO BUTTON -->
-<div class="mt-4">
-    <!-- add you project link -->
-    <a href="#"
-       target="_blank"
-       onclick="event.stopPropagation();"
-       class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-        <i class="fas fa-external-link-alt mr-2"></i>
-        Live Demo
-
-    </a>
-
-</div>
-</div>
-
-</div>
-
-                <!-- ========================================= -->
-                <!-- PROJECT 6 -->
-                <!-- ========================================= -->
-
-                <div class="project-card">
-
-                    <div class="project-image-container">
-                        <img src="VELINO AIRPAD.png"
-                            alt="VELINO AIRPAD"
-                            class="project-image">
-                    </div>
-
-                    <div class="project-content">
-
-                        <h3 class="project-title">
-                            Velino AirPad
-                        </h3>
-
-                        <p class="project-desc short">
-                            Developed an ESP32-based wireless air mouse and gaming controller using motion sensors and Bluetooth connectivity. The device translates hand movements into cursor control and gaming inputs, providing an intuitive, gesture-based user experience for gaming and PC interaction.
-                        </p>
-                        <button class="read-more-btn" onclick="toggleProject(this)">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-
-                        <div class="tech-stack">
-                            <span>ESP32</span>
-                            <span>Bluetooth</span>
-                            <span>MPU6050</span>
-                            <span>Motion Sensors</span>
-                            <span>Gesture Control</span>
-                            <span>HID</span>
-                            <span>Embedded C</span>
-                            <span>Gaming Controller</span>
-                        </div>
-<!-- LIVE DEMO BUTTON -->
-<div class="mt-4">
-    <!-- add you project link -->
-    <a href="#"
-       target="_blank"
-       onclick="event.stopPropagation();"
-       class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-        <i class="fas fa-external-link-alt mr-2"></i>
-        Live Demo
-
-    </a>
-
-</div>
-                    </div>
-
+                    <span class="project-type">DESKTOP APPLICATION</span>
                 </div>
-
-                <!-- ========================================= -->
-                <!-- PROJECT 7 -->
-                <!-- ========================================= -->
-
-                <div class="project-card">
-
-                    <div class="project-image-container">
-                        <img src="VELINO S1.png"
-                            alt="VELINO BOARD"
-                            class="project-image">
-                    </div>
-
-                    <div class="project-content">
-
-                        <h3 class="project-title">
-                            Velino Board S1
-                        </h3>
-<p class="project-desc short">
-    Designed a Smart embedded development board featuring built-in Wi-Fi, Bluetooth, automatic polarity detection, and optimized PCB design. The platform provides a reliable, user-friendly solution for IoT prototyping, embedded development, and rapid hardware testing.
-</p>
-
-<button class="read-more-btn" onclick="toggleProject(this)">
-    Read More <i class="fas fa-chevron-down"></i>
-</button>
-
-<div class="tech-stack">
-    <span>ESP32</span>
-    <span>Wi-Fi</span>
-    <span>Bluetooth</span>
-    <span>Automatic Polarity Detection</span>
-    <span>PCB Design</span>
-    <span>IoT</span>
-    <span>Embedded Systems</span>
-</div>
-<!-- LIVE DEMO BUTTON -->
-<div class="mt-4">
-    <!-- add you project link -->
-    <a href="#"
-       target="_blank"
-       onclick="event.stopPropagation();"
-       class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-        <i class="fas fa-external-link-alt mr-2"></i>
-        Live Demo
-
-    </a>
-
-</div>
-                    </div>
-
-                </div>
-
-                <!-- ========================================= -->
-                <!-- PROJECT 8 -->
-                <!-- ========================================= -->
-
-                <div class="project-card">
-
-                    <div class="project-image-container">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1470&auto=format&fit=crop"
-                            alt="VADDI Calculator"
-                            class="project-image">
-                    </div>
-
-                    <div class="project-content">
-
-                        <h3 class="project-title">
-                            Vaddi Calculator
-                        </h3>
-
-                        <p class="project-desc short">
-                            Developed an Android-based financial calculator using MIT App Inventor for calculating Simple Interest, Compound Interest, EMI, and loan repayments. Designed with a user-friendly interface to provide quick, accurate, and efficient financial calculations.
-                        </p>
-                        
-                        <button class="read-more-btn" onclick="toggleProject(this)">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-
-                        <div class="tech-stack">
-                            <span>MIT App Inventor</span>
-                            <span>Android</span>
-                            <span>Simple Interest</span>
-                            <span>Compound Interest</span>
-                            <span>EMI Calculator</span>
-                            <span>Financial Calculator</span>
-                        </div>
-<!-- LIVE DEMO BUTTON -->
-<div class="mt-4">
-    <!-- add you project link -->
-    <a href="#"
-       target="_blank"
-       onclick="event.stopPropagation();"
-       class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-        <i class="fas fa-external-link-alt mr-2"></i>
-        Live Demo
-
-    </a>
-
-</div>
-                    </div>
-
-                </div>
-
-                <!-- ========================================= -->
-                <!-- PROJECT 9 -->
-                <!-- ========================================= -->
-
-                <div class="project-card">
-
-                    <div class="project-image-container">
-                        <img src="VELINO C3 BOT.png"
-                            alt="AI PET BOT"
-                            class="project-image">
-                    </div>
-
-                    <div class="project-content">
-                        <div class="project-content">
-
-                            <h3 class="project-title">
-                                Velino C3 AI Bot
-                            </h3>
-                        
-                            <p class="project-desc short">
-                                Developed an ESP32-based AI desktop assistant inspired by Emo, featuring voice interaction, intelligent responses, Wi-Fi connectivity, and expressive behaviors. Designed to assist users with daily tasks while providing an interactive and engaging desktop companion experience.
-                            </p>
-                        
-                            <button class="read-more-btn" onclick="toggleProject(this)">
-                                Read More <i class="fas fa-chevron-down"></i>
-                            </button>
-
-                            <div class="tech-stack">
-                                <span>ESP32</span>
-                                <span>AI Assistant</span>
-                                <span>Voice Control</span>
-                                <span>Wi-Fi</span>
-                                <span>Bluetooth</span>
-                                <span>IoT</span>
-                                <span>Embedded C</span>
-                                <span>Robotics</span>
-                            </div>
-                        
-                        </div>
-                        <!-- LIVE DEMO BUTTON -->
-        <div class="mt-4">
-            <!-- add you project link -->
-            <a href="#"
-               target="_blank"
-               onclick="event.stopPropagation();"
-               class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-                <i class="fas fa-external-link-alt mr-2"></i>
-                Live Demo
-
-            </a>
-
-        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- ========================================= -->
-                <!-- PROJECT 10 -->
-                <!-- ========================================= -->
-
-                <div class="project-card">
-
-                    <div class="project-image-container">
-                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1470&auto=format&fit=crop"
-                            alt="ADAS"
-                            class="project-image">
-                    </div>
-
-                    <div class="project-content">
-
-                        <div class="project-content">
-
-                            <h3 class="project-title">
-                                Zone Based ADAS
-                            </h3>
-                        
-                            <p class="project-desc short">
-                                Developed an AI-powered Zone-Based Advanced Driver Assistance System (ADAS) using Python and OpenCV to enhance vehicle safety. The system detects vehicles, pedestrians, and road obstacles, providing real-time zone monitoring and collision warnings for safer driving.
-                            </p>
-                        
-                            <button class="read-more-btn" onclick="toggleProject(this)">
-                                Read More <i class="fas fa-chevron-down"></i>
-                            </button>
-
-                            <div class="tech-stack">
-                                <span>Python</span>
-                                <span>OpenCV</span>
-                                <span>Computer Vision</span>
-                                <!-- <span>YOLO</span> -->
-                                <span>ADAS</span>
-                                <span>Artificial Intelligence</span>
-                            </div>
-                        
-                        </div>
-                        <!-- LIVE DEMO BUTTON -->
-        <div class="mt-4">
-            <!-- add you project link -->
-            <a href="#"
-               target="_blank"
-               onclick="event.stopPropagation();"
-               class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-                <i class="fas fa-external-link-alt mr-2"></i>
-                Live Demo
-
-            </a>
-
-        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- ========================================= -->
-                <!-- PROJECT 11 -->
-                <!-- ========================================= -->
-
-                <div class="project-card">
-
-                    <div class="project-image-container">
-                        <img src="https://i.postimg.cc/xC7GWwQ8/mapnavigator.webp"
-                            alt="MAP NAVIGATOR"
-                            class="project-image">
-                    </div>
-
-                    <div class="project-content">
-
-                        <div class="project-content">
-
-                            <h3 class="project-title">
-                                Velino Map Navigator
-                            </h3>
-                        
-                            <p class="project-desc short">
-                                Developed an ESP32-based smart GPS navigation system that provides real-time location tracking, route guidance, and destination navigation. Designed for portable and embedded applications with accurate positioning and efficient navigation.
-                            </p>
-                        
-                            <button class="read-more-btn" onclick="toggleProject(this)">
-                                Read More <i class="fas fa-chevron-down"></i>
-                            </button>
-
-                            <div class="tech-stack">
-                                <span>ESP32</span>
-                                <span>GPS</span>
-                                <span>Navigation</span>
-                                <span>Google Maps API</span>
-                                <span>Embedded Systems</span>
-                                <span>IoT</span>
-                            </div>
-                        
-                        </div>
-                        <!-- LIVE DEMO BUTTON -->
-        <div class="mt-4">
-            <!-- add you project link -->
-            <a href="#"
-               target="_blank"
-               onclick="event.stopPropagation();"
-               class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-                <i class="fas fa-external-link-alt mr-2"></i>
-                Live Demo
-
-            </a>
-
-        </div>
-
-                    </div>
-
-                </div>
-
-              <!-- ========================================= -->
-<!-- PROJECT 12 -->
-<!-- ========================================= -->
-
-<div class="project-card">
-
-    <div class="project-image-container">
-        <img src="DIGITAL CLOCK.png"
-             alt="Medicine Reminder"
-             class="project-image">
-    </div>
-
-    <div class="project-content">
-
-        <div class="project-content">
-
-            <h3 class="project-title">
-                Velino Smart Medicine Reminder
-            </h3>
-        
-            <p class="project-desc short">
-                Developed an Arduino-based smart healthcare system that reminds users to take medicines at scheduled times using an RTC module and LCD display. The system improves medication adherence through timely alerts and reliable automation.
-            </p>
-        
-
-            <button class="read-more-btn" onclick="toggleProject(this)">
-                Read More <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="tech-stack">
-                <span>Arduino</span>
-                <span>RTC Module</span>
-                <span>LCD Display</span>
-                <span>Buzzer</span>
-                <span>Healthcare IoT</span>
-                <span>Embedded Systems</span>
-            </div>
-        
-        </div>
-        <!-- LIVE DEMO BUTTON -->
-        <div class="mt-4">
-
-            <a href="#"
-               target="_blank"
-               onclick="event.stopPropagation();"
-               class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-                <i class="fas fa-external-link-alt mr-2"></i>
-                Live Demo
-
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-                <!-- ========================================= -->
-                    <!-- PROJECT 13 -->
-                <!-- ========================================= -->
-
-<div class="project-card">
-
-<!-- IMAGE -->
-<div class="project-image-container">
-
-    <img src="https://i.postimg.cc/1zQwd6bm/720A0A9E-71B2-4DB3-9EB5-A308C83EB9EA.png"
-        alt="VELINO IR + BLUETOOTH SMART HOME AUTOMATION"
-        class="project-image">
-
-</div>
-
-<!-- CONTENT -->
-<div class="project-content">
-
-    <div class="project-content">
-
-        <h3 class="project-title">
-            Velino Bluetooth Home Automation
-        </h3>
-    
-        <p class="project-desc short">
-            Developed a smart home automation system using Arduino Uno with dual control via IR remote and Bluetooth (HC-05). The system enables remote switching of home appliances through a mobile app built with MIT App Inventor, along with real-time environmental monitoring using a DHT11 sensor.
-        </p>
-    
-        <button class="read-more-btn" onclick="toggleProject(this)">
-            Read More <i class="fas fa-chevron-down"></i>
-        </button>
-
-        <div class="tech-stack">
-            <span>Arduino Uno</span>
-            <span>HC-05 Bluetooth</span>
-            <span>IR Remote</span>
-            <span>DHT11 Sensor</span>
-            <span>Relay Module</span>
-            <span>MIT App Inventor</span>
-            <span>IoT</span>
-        </div>
-    
-    </div>
-    <!-- LIVE DEMO BUTTON -->
-    <div class="mt-4">
-        <!-- add you project link -->
-        <a href="#"
-           target="_blank"
-           onclick="event.stopPropagation();"
-           class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-            <i class="fas fa-external-link-alt mr-2"></i>
-            Live Demo
-
-        </a>
-
-    </div>
-
-</div>
-
-</div>
-
- 
-
-<!-- ========================================= -->
-<!-- PROJECT 15 -->
-<!-- ========================================= -->
-
-<!-- VELINO TYPEX -->
-<div class="project-card">
-    <div class="project-image-container">
-
-        <img id="typexSlider"
-             src="https://i.postimg.cc/8zJSFFxZ/Screenshot-2026-06-11-at-6-54-20-PM.png"
-             alt="Velino TypeX"
-             class="project-image">
-    
-    </div>
-
-    
-    <div class="project-content">
-
-        <div class="project-content">
-
-            <h3 class="project-title">
-                Velino TypeX
-            </h3>
-        
-            <p class="project-desc short">
-                Developed a professional typing speed trainer web application with real-time WPM tracking, accuracy analysis, timer-based challenges, theme customization, and performance statistics to improve typing efficiency and productivity.
-            </p>
-        
-            <button class="read-more-btn" onclick="toggleProject(this)">
-                Read More <i class="fas fa-chevron-down"></i>
-            </button>
-
-            <div class="tech-stack">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>Typing Trainer</span>
-                <span>Performance Analytics</span>
-                <span>Responsive UI</span>
-            </div>
-        
-        </div>
-        <script>
-
-            const typexImages = [
-            
-            "velino Type X.png",
-           
-            // "https://i.postimg.cc/zzzzzzzz/image4.png"
-            
-            ];
-            
-            let currentTypexImage = 0;
-            
-            setInterval(()=>{
-            
-            currentTypexImage++;
-            
-            if(currentTypexImage >= typexImages.length){
-            currentTypexImage = 0;
-            }
-            
-            document.getElementById("typexSlider").src =
-            typexImages[currentTypexImage];
-            
-            },3000);
-            
-            </script>
-            <style>.project-image{
-                width:100%;
-                height:220px;
-                object-fit:cover;
-                border-radius:12px;
-                transition:opacity .6s ease;
-                }</style>
-
-        <!-- LIVE DEMO BUTTON -->
-        <div class="mt-4">
-
-            <a href="https://velino-type-x.vercel.app/"
-               target="_blank"
-               onclick="event.stopPropagation();"
-               class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-                <i class="fas fa-external-link-alt mr-2"></i>
-                Live Demo
-
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-<!-- ========================================= -->
-<!-- PROJECT 16 -->
-<!-- ========================================= -->
-
-
-                <div class="project-card">
-
-                    <div class="project-image-container">
-                        <img src="BIONIC HAND.png"
-                            alt="Bionic Hand"
-                            class="project-image">
-                    </div>
-
-                    <div class="project-content">
-
-                        <div class="project-content">
-
-                            <h3 class="project-title">
-                                Bionic Hand
-                            </h3>
-                        
-                            <p class="project-desc short" >
-                                Developed an EMG-based bionic prosthetic hand that translates muscle signals into mechanical finger movements using Arduino and servo motors. The system demonstrates real-time human–machine interaction for assistive biomedical applications.
-                            </p>
-                        
-                            <button class="read-more-btn" onclick="toggleProject(this)">
-                                Read More <i class="fas fa-chevron-down"></i>
-                            </button>
-                            
-                            <div class="tech-stack">
-                                <span>EMG Sensors</span>
-                                <span>Arduino</span>
-                                <span>Servo Motors</span>
-                                <span>Biomedical Robotics</span>
-                                <span>Embedded Systems</span>
-                                <span>Assistive Technology</span>
-                            </div>
-                        
-                        </div>
-<!-- LIVE DEMO BUTTON -->
-<div class="mt-4">
-    <!-- add you project link -->
-    <a href="#"
-       target="_blank"
-       onclick="event.stopPropagation();"
-       class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:scale-105 transition duration-300">
-
-        <i class="fas fa-external-link-alt mr-2"></i>
-        Live Demo
-
-    </a>
-
-</div>
-                    </div>
-
-                </div>
-
-
 
             </div>
 
-        </div>
+            <div class="modern-project-image">
+                <img src="Velino IDE Neon Glass Icon.png"
+                     alt="VELINO IDE interface"
+                     loading="lazy">
+            </div>
 
+        </div>
+    </article>
+
+
+      <!-- SECTION DIVIDER -->
+  <div class="flex items-center justify-center my-2 bg-darker">
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+    <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+        portfolio
+    </span>
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+</div>
+
+
+    <!-- =========================================
+         PROJECT 02 — VELINO SMART AI
+         IMAGE LEFT | TEXT RIGHT
+    ========================================== -->
+
+    <article class="modern-project" data-project="02">
+        <div class="project-inner">
+
+            <div class="modern-project-content">
+
+                <div class="project-meta">
+                    <span class="project-index">02</span>
+                    <span class="project-category">ARTIFICIAL INTELLIGENCE</span>
+                </div>
+
+                <h3>VELINO <span>SMART AI</span></h3>
+
+                <p class="modern-project-description">
+                    An intelligent local AI assistant integrated into
+                    VELINO IDE for embedded development. Powered by
+                    open-source local AI models, it provides coding
+                    assistance, Arduino logic guidance, context-aware
+                    suggestions and debugging support.
+                </p>
+
+                <div class="project-tech">
+                    <span>Local AI</span>
+                    <span>Ollama</span>
+                    <span>Open-Source LLM</span>
+                    <span>JavaScript</span>
+                    <span>Node.js</span>
+                    <span>Electron.js</span>
+                    <span>Arduino</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://velino-smart-ai.vercel.app/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="project-visit">
+                        Explore Project
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                    <span class="project-type">LOCAL AI ASSISTANT</span>
+                </div>
+
+            </div>
+
+            <div class="modern-project-image">
+                <img src="Velino smart ai icon.png"
+                     alt="VELINO Smart AI"
+                     loading="lazy">
+            </div>
+
+        </div>
+    </article>
+
+
+     <!-- SECTION DIVIDER -->
+     <div class="flex items-center justify-center my-2 bg-darker">
+
+        <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+    
+        <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+            portfolio
+        </span>
+    
+        <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+    
+    </div>
+
+
+    <!-- =========================================
+         PROJECT 03 — BIONIC HAND
+         TEXT LEFT | IMAGE RIGHT
+    ========================================== -->
+
+    <article class="modern-project" data-project="03">
+        <div class="project-inner">
+
+            <div class="modern-project-content">
+
+                <div class="project-meta">
+                    <span class="project-index">03</span>
+                    <span class="project-category">BIOMEDICAL ROBOTICS</span>
+                </div>
+
+                <h3>BIONIC <span>HAND</span></h3>
+
+                <p class="modern-project-description">
+                    An EMG-based bionic hand developed using Arduino
+                    and servo motors. Muscle signals captured through
+                    EMG sensors control hand movements, demonstrating
+                    the application of embedded systems in assistive
+                    technology and biomedical robotics.
+                </p>
+
+                <div class="project-tech">
+                    <span>EMG Sensors</span>
+                    <span>Arduino</span>
+                    <span>Servo Motors</span>
+                    <span>Embedded Systems</span>
+                    <span>Biomedical Robotics</span>
+                    <span>Assistive Technology</span>
+                </div>
+
+                <div class="project-actions">
+                    <span class="project-type">EMBEDDED SYSTEMS PROJECT</span>
+                </div>
+
+            </div>
+
+            <div class="modern-project-image">
+                <img src="BIONIC HAND.png"
+                     alt="Arduino-based Bionic Hand"
+                     loading="lazy">
+            </div>
+
+        </div>
+    </article>
+
+
+       <!-- SECTION DIVIDER -->
+  <div class="flex items-center justify-center my-2 bg-darker">
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+    <span class="mx-4 text-slate-400 text-sm tracking-widest uppercase">
+        portfolio
+    </span>
+
+    <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+</div>
+
+
+    <!-- =========================================
+         PROJECT 04 — MASTER SLAVE ROBOTIC ARM
+         IMAGE LEFT | TEXT RIGHT
+    ========================================== -->
+
+    <article class="modern-project" data-project="04">
+        <div class="project-inner">
+
+            <div class="modern-project-content">
+
+                <div class="project-meta">
+                    <span class="project-index">04</span>
+                    <span class="project-category">ROBOTICS & AUTOMATION</span>
+                </div>
+
+                <h3>MASTER SLAVE <span>ROBOTIC ARM</span></h3>
+
+                <p class="modern-project-description">
+                    An Arduino-based master-slave robotic hand that
+                    replicates human hand movements using flex sensors
+                    and servo motors. The master hand captures finger
+                    movements and reproduces them on the robotic hand
+                    in real time.
+                </p>
+
+                <div class="project-tech">
+                    <span>Arduino</span>
+                    <span>Flex Sensors</span>
+                    <span>Servo Motors</span>
+                    <span>Embedded C</span>
+                    <span>Robotics</span>
+                    <span>Automation</span>
+                </div>
+
+                <div class="project-actions">
+                    <span class="project-type">ROBOTICS PROJECT</span>
+                </div>
+
+            </div>
+
+            <div class="modern-project-image">
+                <img src="MASTER SLAVE.PNG"
+                     alt="Master Slave Robotic Arm"
+                     loading="lazy">
+            </div>
+
+        </div>
+    </article>
+
+
+    <!-- FOOTER -->
+    <div class="projects-footer">
+        <span>END OF SELECTED WORK</span>
+        <span>DESIGNED & DEVELOPED BY SHIVA VELISHOJU</span>
     </div>
 
 </section>
+
+
+<style>
+
+/* =========================================
+   PROJECT SECTION
+========================================= */
+
+.modern-projects {
+    position: relative;
+    width: 100%;
+    padding: 35px 0 20px;
+
+    background: linear-gradient(
+        135deg,
+        #020617,
+        #0b1b3a,
+        #102a43
+    );
+
+    overflow: hidden;
+
+    --mp-muted: #94a3b8;
+    --mp-border: rgba(148, 163, 184, 0.18);
+}
+
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.projects-heading {
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto 20px;
+    padding: 35px 7% 25px;
+    margin-left: 2px;
+    text-align: left;
+}
+
+.projects-eyebrow {
+    color: #7dd3fc;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.projects-heading h2 {
+    margin: 12px 0 8px;
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 1;
+    letter-spacing: -4px;
+    font-weight: 900;
+    color: #f8fafc;
+}
+
+.projects-heading h2 span {
+    background: linear-gradient(100deg, #8b5cf6, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.projects-heading p {
+    margin: 8px 0 0;
+    color: var(--mp-muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   PROJECT ROW
+========================================= */
+
+.modern-project {
+    --accent: #2b50e6;
+    --accent-soft: rgba(139, 92, 246, .15);
+
+    position: relative;
+    width: 100%;
+    min-height: 0;
+
+    display: flex;
+    align-items: center;
+
+    padding: 45px 7%;
+    margin: 0;
+
+    background: transparent !important;
+    border-top: 1px solid var(--mp-border);
+
+    overflow: hidden;
+    isolation: isolate;
+}
+
+
+/* PROJECT ACCENT COLORS */
+
+.modern-project[data-project="02"] {
+    --accent: #22d3ee;
+    --accent-soft: rgba(34, 211, 238, .13);
+}
+
+.modern-project[data-project="03"] {
+    --accent: #f59e0b;
+    --accent-soft: rgba(245, 158, 11, .13);
+}
+
+.modern-project[data-project="04"] {
+    --accent: #34d399;
+    --accent-soft: rgba(52, 211, 153, .13);
+}
+
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+.modern-project::before {
+    content: "";
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    top: 50%;
+    right: -220px;
+
+    transform: translateY(-50%);
+
+    background: radial-gradient(
+        circle,
+        var(--accent-soft),
+        transparent 68%
+    );
+
+    filter: blur(45px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.modern-project::after {
+    content: "";
+    position: absolute;
+
+    width: 1px;
+    height: 100%;
+
+    top: 0;
+    left: 50%;
+
+    background: linear-gradient(
+        transparent,
+        rgba(255, 255, 255, .04),
+        transparent
+    );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   PROJECT GRID
+========================================= */
+
+.project-inner {
+    width: 100%;
+    max-width: 1450px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+
+    align-items: center;
+    gap: clamp(35px, 6vw, 85px);
+}
+
+
+/* ALTERNATING LAYOUT */
+
+/* PROJECT 01 & 03: TEXT LEFT, IMAGE RIGHT */
+
+.modern-project[data-project="01"] .project-inner,
+.modern-project[data-project="03"] .project-inner {
+    grid-template-columns: .9fr 1.1fr;
+}
+
+/* PROJECT 02 & 04: IMAGE LEFT, TEXT RIGHT */
+
+.modern-project[data-project="02"] .project-inner,
+.modern-project[data-project="04"] .project-inner {
+    grid-template-columns: 1.1fr .9fr;
+}
+
+.modern-project[data-project="02"] .modern-project-image,
+.modern-project[data-project="04"] .modern-project-image {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.modern-project[data-project="02"] .modern-project-content,
+.modern-project[data-project="04"] .modern-project-content {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+
+/* =========================================
+   PROJECT CONTENT
+========================================= */
+
+.modern-project-content {
+    position: relative;
+    z-index: 2;
+
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition: .85s cubic-bezier(.2, .7, .2, 1);
+}
+
+.modern-project.is-visible .modern-project-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* PROJECT META */
+
+.project-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.project-index {
+    font-family: monospace;
+    color: var(--accent);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.project-category {
+    color: #a5b4c8;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+}
+
+.project-category::before {
+    content: "";
+    display: inline-block;
+
+    width: 25px;
+    height: 1px;
+
+    margin: 0 10px 3px 0;
+    background: var(--accent);
+}
+
+
+/* =========================================
+   PROJECT TITLE
+========================================= */
+
+.modern-project-content h3 {
+    margin: 0 0 20px;
+
+    color: #f8fafc;
+
+    font-size: clamp(38px, 4.8vw, 70px);
+    line-height: 1.04;
+
+    font-weight: 900;
+    letter-spacing: -3px;
+
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+.modern-project-content h3 span {
+    display: block;
+    color: var(--accent);
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.modern-project-description {
+    max-width: 570px;
+
+    margin: 0 0 22px;
+
+    color: var(--mp-muted);
+
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+
+/* =========================================
+   TECHNOLOGY TAGS
+========================================= */
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-bottom: 25px;
+}
+
+.project-tech span {
+    padding: 8px 12px;
+
+    border: 1px solid var(--mp-border);
+    border-radius: 5px;
+
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, .025);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    transition: .3s ease;
+}
+
+.project-tech span:hover {
+    color: white;
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   PROJECT ACTIONS
+========================================= */
+
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.project-visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 19px;
+
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+
+    background: var(--accent-soft);
+    color: white;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-decoration: none;
+    transition: .3s ease;
+}
+
+.project-visit i {
+    color: var(--accent);
+    transition: transform .3s ease;
+}
+
+.project-visit:hover {
+    background: var(--accent);
+    color: #080b14;
+    transform: translateY(-3px);
+}
+
+.project-visit:hover i {
+    color: #080b14;
+    transform: translate(3px, -3px);
+}
+
+.project-type {
+    color: #718096;
+
+    font-family: monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================
+   PROJECT IMAGE
+========================================= */
+
+.modern-project-image {
+    position: relative;
+    min-width: 0;
+
+    height: clamp(300px, 38vw, 500px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    border: none;
+    border-radius: 0;
+
+    background: transparent !important;
+
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    opacity: 0;
+    transform: translateX(45px) scale(.97);
+
+    transition:
+        opacity .9s ease,
+        transform 1s cubic-bezier(.2, .7, .2, 1);
+}
+
+.modern-project.is-visible .modern-project-image {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+
+/* IMAGE LEFT PROJECTS ENTER FROM LEFT */
+
+.modern-project[data-project="02"] .modern-project-image,
+.modern-project[data-project="04"] .modern-project-image {
+    transform: translateX(-45px) scale(.97);
+}
+
+.modern-project[data-project="02"].is-visible .modern-project-image,
+.modern-project[data-project="04"].is-visible .modern-project-image {
+    transform: translateX(0) scale(1);
+}
+
+
+/* IMAGE */
+
+.modern-project-image img {
+    position: relative;
+    z-index: 1;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    border: none;
+    border-radius: 0;
+
+    background: transparent !important;
+    box-shadow: none;
+
+    transition: transform .65s cubic-bezier(.2, .7, .2, 1);
+}
+
+.modern-project-image:hover img {
+    transform: scale(1.035);
+}
+
+
+/* =========================================
+   PROJECT DIVIDER
+========================================= */
+
+.project-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    padding: 8px 0;
+    margin: 0 auto;
+
+    background: transparent;
+}
+
+.project-divider span {
+    display: block;
+
+    width: 75px;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #64748b,
+        transparent
+    );
+}
+
+.project-divider p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.projects-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    padding: 25px 7%;
+    margin-top: 10px;
+
+    border-top: 1px solid var(--mp-border);
+
+    color: #718096;
+
+    font-family: monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media(max-width: 900px) {
+
+    .modern-project {
+        padding: 35px 6%;
+    }
+
+    .project-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    /* ALL PROJECTS: IMAGE FIRST */
+
+    .modern-project-image {
+        order: 1;
+        width: 100%;
+        height: 350px;
+        transform: translateY(30px);
+    }
+
+    .modern-project-content {
+        order: 2;
+        width: 100%;
+    }
+
+    /* Reset desktop grid placement */
+
+    .modern-project[data-project] .modern-project-image,
+    .modern-project[data-project] .modern-project-content {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .modern-project[data-project="02"] .modern-project-image,
+    .modern-project[data-project="04"] .modern-project-image {
+        transform: translateY(30px);
+    }
+
+    .modern-project[data-project="02"].is-visible .modern-project-image,
+    .modern-project[data-project="04"].is-visible .modern-project-image {
+        transform: translateY(0);
+    }
+
+    .modern-project-content h3 {
+        font-size: clamp(40px, 7vw, 60px);
+    }
+
+    .modern-project::after {
+        display: none;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width: 600px) {
+
+    .modern-projects {
+        padding-top: 20px;
+        padding-bottom: 15px;
+    }
+
+    .projects-heading {
+        padding: 30px 22px 15px;
+        margin-bottom: 10px;
+    }
+
+    .projects-eyebrow {
+        font-size: 9px;
+        letter-spacing: 2.5px;
+    }
+
+    .projects-heading h2 {
+        font-size: 43px;
+        letter-spacing: -3px;
+        margin: 12px 0 8px;
+    }
+
+    .projects-heading p {
+        font-size: 12px;
+    }
+
+    .modern-project {
+        min-height: auto;
+        padding: 30px 22px;
+    }
+
+    .project-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    /* IMAGE AT TOP */
+
+    .modern-project-image {
+        order: 1;
+
+        width: 100%;
+        height: 245px;
+
+        padding: 0;
+        border: none;
+        border-radius: 0;
+
+        background: transparent !important;
+        box-shadow: none;
+    }
+
+    .modern-project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* CONTENT BELOW IMAGE */
+
+    .modern-project-content {
+        order: 2;
+        width: 100%;
+    }
+
+    .modern-project-content h3 {
+        font-size: 38px;
+        letter-spacing: -2px;
+    }
+
+    .project-meta {
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .project-category {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+
+    .modern-project-description {
+        font-size: 12px;
+        line-height: 1.8;
+        margin-bottom: 18px;
+    }
+
+    .project-tech {
+        gap: 7px;
+        margin-bottom: 20px;
+    }
+
+    .project-tech span {
+        padding: 7px 9px;
+        font-size: 9px;
+    }
+
+    .project-actions {
+        gap: 14px;
+    }
+
+    .project-visit {
+        padding: 11px 15px;
+        font-size: 10px;
+    }
+
+    .project-divider {
+        padding: 5px 0;
+        gap: 10px;
+    }
+
+    .project-divider span {
+        width: 45px;
+    }
+
+    .project-divider p {
+        font-size: 8px;
+    }
+
+    .projects-footer {
+        padding: 20px 22px;
+        font-size: 8px;
+        line-height: 1.8;
+    }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    .modern-project-content,
+    .modern-project-image,
+    .modern-project-image img,
+    .project-tech span,
+    .project-visit {
+        transition: none !important;
+        transform: none !important;
+    }
+
+    .modern-project-content,
+    .modern-project-image {
+        opacity: 1;
+    }
+}
+
+</style>
+
+
+<!-- ============================================
+     PROJECT SCROLL ANIMATION
+     Include this script only once
+============================================= -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const projects = document.querySelectorAll(".modern-project");
+
+    if (!("IntersectionObserver" in window)) {
+        projects.forEach(project => {
+            project.classList.add("is-visible");
+        });
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, observer) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("is-visible");
+
+                observer.unobserve(entry.target);
+            }
+
+        });
+
+    }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px"
+    });
+
+    projects.forEach(project => {
+        observer.observe(project);
+    });
+
+});
+</script>
+
+
+<script>
+
+/* =========================================
+   PROJECT SCROLL REVEAL
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const projects = document.querySelectorAll(".modern-project");
+
+    if ("IntersectionObserver" in window) {
+
+        const projectObserver = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("is-visible");
+
+                    projectObserver.unobserve(entry.target);
+                }
+
+            });
+
+        }, {
+            threshold: 0.12
+        });
+
+        projects.forEach(project => {
+            projectObserver.observe(project);
+        });
+
+    } else {
+
+        projects.forEach(project => {
+            project.classList.add("is-visible");
+        });
+
+    }
+
+});
+
+</script>
+
+
+
+<!-- ============================================
+     SCROLL ANIMATIONS
+============================================= -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const projects = document.querySelector(".modern-projects");
+
+    if (!projects) return;
+
+    const panels = [
+        ...projects.querySelectorAll(".modern-project")
+    ];
+
+    if (!panels.length) return;
+
+    // Reveal project panels on scroll
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                }
+            });
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    panels.forEach(panel => observer.observe(panel));
+
+    // Top progress indicator
+    const progress = document.createElement("div");
+    progress.className = "project-scroll-progress";
+    document.body.appendChild(progress);
+
+    let ticking = false;
+
+    function updateProgress() {
+
+        if (ticking) return;
+
+        ticking = true;
+
+        requestAnimationFrame(() => {
+
+            const rect = projects.getBoundingClientRect();
+
+            const total = projects.offsetHeight - window.innerHeight;
+
+            const current = Math.min(
+                Math.max(-rect.top, 0),
+                Math.max(total, 0)
+            );
+
+            const percentage = total > 0
+                ? current / total * 100
+                : 0;
+
+            progress.style.width = percentage + "%";
+
+            ticking = false;
+
+        });
+
+    }
+
+    window.addEventListener("scroll", updateProgress, {
+        passive: true
+    });
+
+    window.addEventListener("resize", updateProgress);
+
+    updateProgress();
+
+});
+</script>
+
 
 <script>function toggleProject(btn){
 
